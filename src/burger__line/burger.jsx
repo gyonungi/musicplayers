@@ -1,4 +1,4 @@
-function burger__line(){
+function BurgerLine(){
     return(
         <div class="nav__burger burger">
         <span class="burger__line"></span>
