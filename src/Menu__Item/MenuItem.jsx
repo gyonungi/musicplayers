@@ -1,4 +1,4 @@
-function MenuItem(){
+export default function MenuItem(){
     return(
         <div class="nav__menu menu">
                         <ul class="menu__list">
