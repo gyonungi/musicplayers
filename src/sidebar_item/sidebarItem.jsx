@@ -1,4 +1,4 @@
-function sidebarItem(){
+export default function sidebarItem(){
     return(
         <div class="main__sidebar sidebar">
         <div class="sidebar__personal">
