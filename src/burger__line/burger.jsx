@@ -1,4 +1,4 @@
-function BurgerLine(){
+export default function BurgerLine(){
     return(
         <div class="nav__burger burger">
         <span class="burger__line"></span>
