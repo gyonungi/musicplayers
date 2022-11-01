@@ -1,4 +1,4 @@
-function searchTrack(){
+export default function searchTrack(){
 
 return(<div class="centerblock__search search">
 <svg class="search__svg">
