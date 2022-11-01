@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+
 import './App.css';
+import BurgerLine from './burger__line/burger';
+import './Menu__Item/MenuItem';
+import MenuItem from './Menu__Item/MenuItem';
+import sidebarItem from './sidebar_item/sidebarItem'
+import searchTrack from './searchTrack/seach'
+import filterTrack from './filter__track/filterTrack'
+import playlistItem from './playlist_item/playlist__item'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+            <body>
+                <searchTrack></searchTrack>
+                <sidebarItem></sidebarItem>
+                <BurgerLine> </BurgerLine>
+                <MenuItem> </MenuItem>
+                <filterTrack></filterTrack>
+                <playlistItem></playlistItem>
+              </body>
+ 
   );
 }
 
