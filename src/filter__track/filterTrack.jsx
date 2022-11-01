@@ -1,4 +1,4 @@
-function filterTrack(){
+export default function filterTrack(){
     return( 
     <div class="centerblock__filter filter">
         <div class="filter__title">Искать по:</div>
