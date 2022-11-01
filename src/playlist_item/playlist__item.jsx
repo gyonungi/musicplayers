@@ -1,4 +1,4 @@
-function playlistItem(){
+export default function playlistItem(){
     return(
         <div class="playlist__item">
         <div class="playlist__track track">
