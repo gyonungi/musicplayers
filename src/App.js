@@ -1,4 +1,5 @@
-
+import '../css/style.css';
+import '../css/style.scss';
 import './App.css';
 import BurgerLine from './burger__line/burger';
 import './Menu__Item/MenuItem';
