@@ -5,7 +5,7 @@ export default function playlistItem(){
             <div class="track__title">
                 <div class="track__title-image">
                     <svg class="track__title-svg" alt="music">
-                        <use xlink:href="img/icon/sprite.svg#icon-note"></use>
+                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                     </svg>
                 </div>
                 <div class="track__title-text">
@@ -20,7 +20,7 @@ export default function playlistItem(){
             </div>
             <div class="track__time">
                 <svg class="track__time-svg" alt="time">
-                    <use xlink:href="img/icon/sprite.svg#icon-like"></use>
+                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                 </svg>
                 <span class="track__time-text">4:44</span>
             </div>
