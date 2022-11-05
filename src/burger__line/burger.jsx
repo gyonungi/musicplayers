@@ -1,10 +1,9 @@
 export default function BurgerLine(){
     return(
-        <div class="nav__burger burger">
-        <span class="burger__line"></span>
-        <span class="<!--  -->burger__line"></span>
-        <span class="burger__line"></span>
+        <div className="nav__burger burger">
+        <span className="burger__line"></span>
+        <span className="<!--  -->burger__line"></span>
+        <span className="burger__line"></span>
     </div>
-
     );
 }
