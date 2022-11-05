@@ -1,11 +1,10 @@
-export default function searchTrack(){
+export default function SearchTrack(){
 
-return(<div class="centerblock__search search">
-<svg class="search__svg">
+return(<div className="centerblock__search search">
+<svg className="search__svg">
     <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
 </svg>    
-
-<input class="search__text" type="search" placeholder="Поиск" name="search"> </input>
+<input className="search__text" type="search" placeholder="Поиск" name="search"/> 
 </div>
 )
 }
