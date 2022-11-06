@@ -1,3 +1,4 @@
+import '../src/filter__track/filter.css';
 export default function FilterTrack(){
     return( 
     <div className="centerblock__filter filter">
