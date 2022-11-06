@@ -1,9 +1,3 @@
-import '../src/playlist_item/playlistItem.css';
-import '../src/burger__line/burger.css';
-import '../src/Menu__Item/menuitem.css';
-import '../src/searchTrack/seach.css';
-import '../src/sidebar_item/sidebar.css';
-import '../src/filter__track/filter.css';
 import './App.css';
 import SidebarItem from './sidebar_item/sidebarItem';
 import BurgerLine from './burger__line/burger';
@@ -12,6 +6,8 @@ import MenuItem from './Menu__Item/MenuItem';
 import SearchTrack from './searchTrack/seach';
 import FilterTrack from './filter__track/filterTrack';
 import PlaylistItem from './playlist_item/playlistItem';
+
+import { render, screen } from '@testing-library/react';
 
 function App() {
   return (
@@ -28,3 +24,9 @@ function App() {
 }
 
 export default App;
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
