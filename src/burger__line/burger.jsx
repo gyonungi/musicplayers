@@ -1,3 +1,5 @@
+import '../src/burger__line/burger.css';
+
 export default function BurgerLine(){
     return(
         <div className="nav__burger burger">
