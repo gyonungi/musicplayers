@@ -1,4 +1,4 @@
-import '../src/burger__line/burger.css';
+import './burger.css';
 
 export default function BurgerLine(){
     return(
