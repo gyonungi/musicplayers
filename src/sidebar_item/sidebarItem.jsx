@@ -1,4 +1,4 @@
-import '../src/sidebar_item/sidebar.css';
+import './sidebar.css';
 export default function SidebarItem(){
     return(
         <div className="main__sidebar sidebar">
