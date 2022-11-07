@@ -1,4 +1,4 @@
-import '../src/playlist_item/playlistItem.css';
+import './playlistItem.css';
 export default function PlaylistItem(){
     return(
         <div className="playlist__item">
