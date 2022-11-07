@@ -1,4 +1,4 @@
-import '../src/Menu__Item/menuitem.css';
+import './menuitem.css';
 export default function MenuItem(){
     return(
         <div className="nav__menu menu">

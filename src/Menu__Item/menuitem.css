@@ -15,3 +15,8 @@
     display: block;
     visibility: visible;
   }  
+
+  ul li {
+    list-style: none;
+  }
+  
