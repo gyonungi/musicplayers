@@ -17,4 +17,21 @@
   .filter__button:not(:last-child) {
     margin-right: 10px;
   }
+
+  ._btn-text:hover {
+    border-color: #D9B6FF;
+    color: #D9B6FF;
+    cursor: pointer;
+  }
+
+  ._btn-text:active {
+    border-color: #AD61FF;
+    color: #AD61FF;
+    cursor: pointer;
+  }
+
+  button,
+._btn {
+  cursor: pointer;
+}
   
