@@ -1,4 +1,4 @@
-import '../src/searchTrack/seach.css';
+import './seach.css';
 export default function SearchTrack(){
 
 return(<div className="centerblock__search search">
