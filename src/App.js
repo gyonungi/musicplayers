@@ -1,26 +1,23 @@
-import '../css/style.css';
-import '../css/style.scss';
-import './App.css';
-import BurgerLine from './burger__line/burger';
-import './Menu__Item/MenuItem';
-import MenuItem from './Menu__Item/MenuItem';
-import sidebarItem from './sidebar_item/sidebarItem'
-import searchTrack from './searchTrack/seach'
-import filterTrack from './filter__track/filterTrack'
-import playlistItem from './playlist_item/playlist__item'
+import SidebarItem from "./sidebar_item/sidebarItem";
+import BurgerLine from "./burger__line/burger";
+import MenuItem from "./Menu__Item/MenuItem";
+import SearchTrack from "./searchTrack/seach";
+import FilterTrack from "./filter__track/filterTrack";
+import PlaylistItem from "./playlist_item/playlist__item";
+
 
 function App() {
   return (
-            <body>
-                <searchTrack></searchTrack>
-                <sidebarItem></sidebarItem>
-                <BurgerLine> </BurgerLine>
-                <MenuItem> </MenuItem>
-                <filterTrack></filterTrack>
-                <playlistItem></playlistItem>
-              </body>
- 
+    <div>
+      <SearchTrack/>
+      <SidebarItem/>
+      <BurgerLine/>
+      <MenuItem/>
+      <FilterTrack/>
+      <PlaylistItem/>
+    </div>
   );
 }
+
 
 export default App;
