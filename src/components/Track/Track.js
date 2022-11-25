@@ -3,7 +3,6 @@ import './Track.css'
 
 const Track = () => {
   return (
-
       <div className="track">
         <div className="track__title">
           <div className="track__title-image">

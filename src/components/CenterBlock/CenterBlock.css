@@ -38,6 +38,9 @@
     border-radius: 60px;
     padding: 6px 20px;
 }
+.centerBlock__filter_btn:active{
+    background-color: blue;
+}
 .centerblock__playlist {
     display: flex;
     flex-direction: column;
@@ -67,3 +70,5 @@
     padding-left: 30px;
     width: 60px;  
 }
+
+
