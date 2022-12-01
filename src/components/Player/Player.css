@@ -1,5 +1,5 @@
 .bar {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -90,7 +90,9 @@
   
   .player__btn-prev-svg {
     width: 15px;
-    height: 14px;
+    height: 14px; 
+    background-image: url(/src/images/icon/prev.svg);
+   
   }
   
   .player__btn-play {
@@ -101,6 +103,8 @@
     width: 22px;
     height: 20px;
     fill: #D9D9D9;
+    background-image: url(/src/images/icon/play.svg);
+    background-repeat: no-repeat;
   }
   
   .player__btn-next {
@@ -113,6 +117,8 @@
     height: 14px;
     fill: inherit;
     stroke: #D9D9D9;
+    background-image: url(/src/images/icon/next.svg);
+    
   }
   
   .player__btn-repeat {
@@ -120,10 +126,12 @@
   }
   
   .player__btn-repeat-svg {
-    width: 18px;
-    height: 12px;
+    width: 21px;
+    height: 18px;
     fill: transparent;
     stroke: #696969;
+    background-image: url(/src/images/icon/repeat.svg);
+    background-repeat: no-repeat;
   }
   
   .player__btn-shuffle {
@@ -137,9 +145,11 @@
   
   .player__btn-shuffle-svg {
     width: 19px;
-    height: 12px;
+    height: 17px;
     fill: transparent;
     stroke: #696969;
+    background-image: url(/src/images/icon/shuffle.svg);
+    background-repeat: no-repeat;
   }
   
   .player__track-play {
@@ -185,10 +195,12 @@
   }
   
   .track-play__svg {
-    width: 18px;
-    height: 17px;
+    width: 22px;
+    height: 22px;
     fill: transparent;
     stroke: #4E4E4E;
+    background-image: url(/src/images/icon/note.svg);
+    background-repeat: no-repeat;
   }
   
   .track-play__author {
@@ -241,10 +253,12 @@
   }
   
   .track-play__like-svg {
-    width: 14px;
-    height: 12px;
+    width: 17px;
+    height: 16px;
     fill: transparent;
     stroke: #696969;
+    background-image: url(/src/images/icon/like.svg);
+    background-repeat: no-repeat;
   }
   
   .track-play__dislike {
@@ -252,10 +266,12 @@
   }
   
   .track-play__dislike-svg {
-    width: 14.34px;
-    height: 13px;
+    width: 17px;
+    height: 17px;
     fill: transparent;
     stroke: #696969;
+    background-image: url(/src/images/icon/dislike.svg);
+    background-repeat: no-repeat;
   }
   
   .volume__content {
