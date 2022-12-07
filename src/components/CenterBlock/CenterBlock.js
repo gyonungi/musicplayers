@@ -18,19 +18,29 @@ function CenterBlock() {
             исполнителю
           </button>
           <ul className="list">
-            <li className="list-item">Michael Jackson</li>
-            <li className="list-item">Frank Sinatra</li>
-            <li className="list-item">Calvin Harris</li>
-            <li className="list-item">Bones</li>
-            <li className="list-item">Central Cee</li>
-            <li className="list-item">Cold Carti</li>
-            <li className="list-item">Cold Carti</li>
-            <li className="list-item">Cold Carti</li>
-            <li className="list-item">Cold Carti</li>
+            <li className="list-item-musician">Michael Jackson</li>
+            <li className="list-item-musician">Frank Sinatra</li>
+            <li className="list-item-musician">Calvin Harris</li>
+            <li className="list-item-musician">Bones</li>
+            <li className="list-item-musician">Central Cee</li>
+            <li className="list-item-musician">Cold Carti</li>
+            <li className="list-item-musician">Cold Carti</li>
+            <li className="list-item-musician">Cold Carti</li>
+            <li className="list-item-musician">Cold Carti</li>
           </ul>
         </div>
         <button className="centerBlock__filter_btn">году выпуска</button>
+        <div className="dropdown">
         <button className="centerBlock__filter_btn">жанру</button>
+        <ul className="list">
+            <li className="list-item-genre">Elektro</li>
+            <li className="list-item-genre">Jazz</li>
+            <li className="list-item-genre">Rap</li>
+            <li className="list-item-genre">Techno</li>
+            <li className="list-item-genre">Hip-hop</li>
+            <li className="list-item-genre">R&B</li>
+          </ul>
+        </div>
       </div>
       <div className="centerblock__content">
         <div className="centerblock__playlist-title">

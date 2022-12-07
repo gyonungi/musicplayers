@@ -33,7 +33,7 @@
 .list {
     display: none;
     position: absolute;
-    background-color: ##313131;
+    background-color: #313131;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -53,7 +53,21 @@
     border-radius: 20px;       /* закругления плашки */
     border: 3px solid #313131;  /* padding вокруг плашки */
   }
-.list-item {
+.list-item-musician {
+    color: #313131;
+    text-decoration: none;
+    display: block;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around; 
+}
+
+.list-item-genre {
     color: #313131;
     text-decoration: none;
     display: block;
