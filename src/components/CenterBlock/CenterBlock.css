@@ -31,7 +31,6 @@
     display: inline-block;
 }
 .list {
-    display: none;
     position: absolute;
     background-color: #313131;
     min-width: 160px;
