@@ -65,7 +65,19 @@
     display: flex;
     justify-content: space-around; 
 }
-
+.list-item-year {
+    color: #313131;
+    text-decoration: none;
+    display: block;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around; 
+}
 .list-item-genre {
     color: #313131;
     text-decoration: none;
