@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState  } from "react";
 
 import Track from "../Track/Track";
 import "./CenterBlock.css";
-
 // массив артистов можно вынести за функцию
 const artists = [
   {
@@ -84,12 +83,48 @@ const years = [
   }
 ];
 
-// то же самое нужно сделать и для жанров
 
-// и завести аналогичный массив треков
-const defaultTracks = [
-  // ....
-]
+const defaultTracks = [ 
+{
+  id: 1,
+  name: "AirPlane Mode",
+  label:"Bones",
+  genres:"Hip-Hop",
+  year: "2020",
+},
+{
+  id: 2,
+  name: "Loading",
+  label:"Central Cee",
+  genres:"Techno",
+  year: "2021",
+},{
+  id: 3,
+  name: "Save",
+  label:"Cold Carti",
+  genres:"Elektro",
+  year: "2019",
+},{
+  id: 4,
+  name: "My Way",
+  label:"Calvin Harris",
+  genres:"Hip-Hop",
+  year: "2018",
+},{
+  id: 5,
+  name: "AirPlane Mode",
+  label:"Bones",
+  genres:"Frank Sinatra",
+  year: "2017",
+},
+{
+  id: 6,
+  name: "Bad",
+  label:"Michael Jackson",
+  genres:"R&B",
+  year: "2016",
+}
+];
 
 function CenterBlock() {
   // затем кладем массив треков в локальное состояние
@@ -100,22 +135,28 @@ function CenterBlock() {
   const [visibleGenreMenu, setVisibleGenreMenu] = useState(false);
   const [visibleYearMenu, setVisibleYearMenu] = useState(false);
 
+
+  // создаем состояния для хранения ЗНАЧЕНИЙ по каждому типу фильтров
+  // изначально фильтр пустой
+  const [artistFilter, setArtistFilter] = useState('')
+  const [yearFilter, setYearFilter] = useState('')
+  const [genreFilter, setGenreFilter] = useState('')
+
   // обработка клика по кнопке фильтра "Исполнитель"
   const handleArtistFilterClick = () => {
     let listItem = artists.map(artist => <li key={artist.id}>{artist.name}</li>)
-    // используй инвертирование булевого значения с помощью оператора !
-    // это поможет включать и выключать меню при каждом клике
+  
     setVisibleArtistMenu(!visibleArtistMenu);
   }
 
   // обработка клика по кнопке фильтра "Жанр"
   const handleGenreFilterClick = () => {
-    let listItemGenre = genres.map(genre => <li key={genres.id}>{genres.name}</li>)
+    let listItemGenre = genres.map(genre => <li key={genre.id}>{genre.name}</li>)
     // используй инвертирование булевого значения с помощью оператора !
     // это поможет включать и выключать меню при каждом клике 
     setVisibleGenreMenu(!visibleGenreMenu);
   }
-
+ // обработка клика по кнопке фильтра "Год"
   const handleYearFilterClick = () => {
     let listItemYear = years.map(year => <li key={year.id}>{year.name}</li>)
     // используй инвертирование булевого значения с помощью оператора !
@@ -123,6 +164,17 @@ function CenterBlock() {
     setVisibleYearMenu(!visibleYearMenu);
   }
 
+  const handleArtistFilterSelect = (artist) => {
+    setArtistFilter(artist)
+  }
+  const handleGenreFilterSelect = (genre) => {
+    setGenreFilter(genre)
+  }
+  const handleYearFilterSelect = (year) => {
+    setYearFilter(year)
+  }
+
+ 
 
   return (
     <div className="centerBlock">
@@ -140,8 +192,10 @@ function CenterBlock() {
             <ul className="list">
               {/* тут мы рендерим список с помощью массива и метода .map */}
               {
-                artists.map(item => <li className="list-item-musician" key={item.id}>{item.name}</li>)
-             }
+                // добавляем обработчик клика для элементов выпадающего списка
+                // при клике на него мы должны в state artistFilter сохранить выбранного артиста
+                artists.map(item => <li className="list-item-musician" key={item.id} onClick={() => handleArtistFilterSelect(item.name)}>{item.name}</li>)  
+              }
             </ul>
 
           }
@@ -157,7 +211,7 @@ function CenterBlock() {
             <ul className="list">
             {/* тут мы рендерим список с помощью массива и метода .map */}
             {
-              years.map(items => <li className="list-item-year" key={items.id}>{items.name}</li>)
+              years.map(item => <li className="list-item-year" key={item.id} onClick={() => handleGenreFilterSelect(item.name)}>{item.name}</li>)
             }
           </ul>
           }
@@ -172,7 +226,7 @@ function CenterBlock() {
             <ul className="list">
             {/* тут мы рендерим список с помощью массива и метода .map */}
             {
-              genres.map(items => <li className="list-item-genre" key={items.id}>{items.name}</li>)
+              genres.map(item => <li className="list-item-genre" key={item.id} onClick={() => handleYearFilterSelect(item.name)}>{item.name}</li>)
             }
           </ul>
           }
@@ -194,6 +248,10 @@ function CenterBlock() {
               return <Track .... />
             })
           */}
+          {/* tracks.map((track) =>  {
+            return <Track />
+          }) */}
+          {/* <Track />
           <Track />
           <Track />
           <Track />
@@ -202,8 +260,7 @@ function CenterBlock() {
           <Track />
           <Track />
           <Track />
-          <Track />
-          <Track />
+          <Track /> */}
           <div className="navigationMenu">
             <button className="navigationMenu__link navigationMenu__link_daily-playList"></button>
             <button className="navigationMenu__link navigationMenu__link_top-100"></button>
