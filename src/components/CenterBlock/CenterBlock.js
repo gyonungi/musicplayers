@@ -251,7 +251,7 @@ function CenterBlock() {
           {/* tracks.map((track) =>  {
             return <Track />
           }) */}
-          {/* <Track />
+         <Track />
           <Track />
           <Track />
           <Track />
@@ -260,7 +260,7 @@ function CenterBlock() {
           <Track />
           <Track />
           <Track />
-          <Track /> */}
+          <Track /> 
           <div className="navigationMenu">
             <button className="navigationMenu__link navigationMenu__link_daily-playList"></button>
             <button className="navigationMenu__link navigationMenu__link_top-100"></button>
