@@ -1,4 +1,4 @@
-import React, { useState  } from "react";
+import React, { useState } from "react";
 
 import Track from "../Track/Track";
 import "./CenterBlock.css";
@@ -6,124 +6,126 @@ import "./CenterBlock.css";
 const artists = [
   {
     id: 2,
-    name: "Michael Jackson"
+    name: "Michael Jackson",
   },
   {
     id: 1,
-    name: "Frank Sinatra"
+    name: "Frank Sinatra",
   },
   {
     id: 3,
-    name: "Calvin Harris"
+    name: "Calvin Harris",
   },
   {
     id: 4,
-    name: "Bones"
+    name: "Bones",
   },
   {
     id: 5,
-    name: "Central Cee"
+    name: "Central Cee",
   },
   {
     id: 6,
-    name: "Cold Carti"
-  }
+    name: "Cold Carti",
+  },
 ];
 
 const genres = [
   {
     id: 1,
-    name: "Elektro"
+    name: "Elektro",
   },
   {
     id: 2,
-    name: "Jazz"
+    name: "Jazz",
   },
   {
     id: 3,
-    name: "Rap"
+    name: "Rap",
   },
   {
     id: 4,
-    name: "Techno"
+    name: "Techno",
   },
   {
     id: 5,
-    name: "Hip-Hop"
+    name: "Hip-Hop",
   },
   {
     id: 6,
-    name: "R&B"
-  }
+    name: "R&B",
+  },
 ];
 const years = [
   {
     id: 1,
-    name: "2021"
+    name: "2021",
   },
   {
     id: 2,
-    name: "2020"
+    name: "2020",
   },
   {
     id: 3,
-    name: "2019"
+    name: "2019",
   },
   {
     id: 4,
-    name: "2018"
+    name: "2018",
   },
   {
     id: 5,
-    name: "2017"
+    name: "2017",
   },
   {
     id: 6,
-    name: "2016"
-  }
+    name: "2016",
+  },
 ];
 
-
-const defaultTracks = [ 
-{
-  id: 1,
-  name: "AirPlane Mode",
-  label:"Bones",
-  genres:"Hip-Hop",
-  year: "2020",
-},
-{
-  id: 2,
-  name: "Loading",
-  label:"Central Cee",
-  genres:"Techno",
-  year: "2021",
-},{
-  id: 3,
-  name: "Save",
-  label:"Cold Carti",
-  genres:"Elektro",
-  year: "2019",
-},{
-  id: 4,
-  name: "My Way",
-  label:"Calvin Harris",
-  genres:"Hip-Hop",
-  year: "2018",
-},{
-  id: 5,
-  name: "AirPlane Mode",
-  label:"Bones",
-  genres:"Frank Sinatra",
-  year: "2017",
-},
-{
-  id: 6,
-  name: "Bad",
-  label:"Michael Jackson",
-  genres:"R&B",
-  year: "2016",
-}
+const defaultTracks = [
+  {
+    id: 1,
+    name: "AirPlane Mode",
+    label: "Bones",
+    genres: "Hip-Hop",
+    year: "2020",
+  },
+  {
+    id: 2,
+    name: "Loading",
+    label: "Central Cee",
+    genres: "Techno",
+    year: "2021",
+  },
+  {
+    id: 3,
+    name: "Save",
+    label: "Cold Carti",
+    genres: "Elektro",
+    year: "2019",
+  },
+  {
+    id: 4,
+    name: "My Way",
+    label: "Calvin Harris",
+    genres: "Hip-Hop",
+    year: "2018",
+  },
+  {
+    id: 5,
+    name: "AirPlane Mode",
+    label: "Bones",
+    genres: "Frank Sinatra",
+    year: "2017",
+  },
+  {
+    id: 6,
+    name: "Bad",
+    label: "Michael Jackson",
+    genres: "R&B",
+    year: "2016",
+  },
 ];
 
 function CenterBlock() {
@@ -135,46 +137,47 @@ function CenterBlock() {
   const [visibleGenreMenu, setVisibleGenreMenu] = useState(false);
   const [visibleYearMenu, setVisibleYearMenu] = useState(false);
 
-
   // создаем состояния для хранения ЗНАЧЕНИЙ по каждому типу фильтров
   // изначально фильтр пустой
-  const [artistFilter, setArtistFilter] = useState('')
-  const [yearFilter, setYearFilter] = useState('')
-  const [genreFilter, setGenreFilter] = useState('')
+  const [artistFilter, setArtistFilter] = useState("");
+  const [yearFilter, setYearFilter] = useState("");
+  const [genreFilter, setGenreFilter] = useState("");
 
   // обработка клика по кнопке фильтра "Исполнитель"
   const handleArtistFilterClick = () => {
-    let listItem = artists.map(artist => <li key={artist.id}>{artist.name}</li>)
-  
+    let listItem = artists.map((artist) => (
+      <li key={artist.id}>{artist.name}</li>
+    ));
+
     setVisibleArtistMenu(!visibleArtistMenu);
-  }
+  };
 
   // обработка клика по кнопке фильтра "Жанр"
   const handleGenreFilterClick = () => {
-    let listItemGenre = genres.map(genre => <li key={genre.id}>{genre.name}</li>)
+    let listItemGenre = genres.map((genre) => (
+      <li key={genre.id}>{genre.name}</li>
+    ));
     // используй инвертирование булевого значения с помощью оператора !
-    // это поможет включать и выключать меню при каждом клике 
+    // это поможет включать и выключать меню при каждом клике
     setVisibleGenreMenu(!visibleGenreMenu);
-  }
- // обработка клика по кнопке фильтра "Год"
+  };
+  // обработка клика по кнопке фильтра "Год"
   const handleYearFilterClick = () => {
-    let listItemYear = years.map(year => <li key={year.id}>{year.name}</li>)
+    let listItemYear = years.map((year) => <li key={year.id}>{year.name}</li>);
     // используй инвертирование булевого значения с помощью оператора !
-    // это поможет включать и выключать меню при каждом клике 
+    // это поможет включать и выключать меню при каждом клике
     setVisibleYearMenu(!visibleYearMenu);
-  }
+  };
 
   const handleArtistFilterSelect = (artist) => {
-    setArtistFilter(artist)
-  }
+    setArtistFilter(artist);
+  };
   const handleGenreFilterSelect = (genre) => {
-    setGenreFilter(genre)
-  }
+    setGenreFilter(genre);
+  };
   const handleYearFilterSelect = (year) => {
-    setYearFilter(year)
-  }
-
- 
+    setYearFilter(year);
+  };
 
   return (
     <div className="centerBlock">
@@ -182,55 +185,88 @@ function CenterBlock() {
       <div className="centerBlock__filter">
         <h3 className="centerBlock__filter_title">Искать по:</h3>
         <div className="dropdown">
-          <button className="centerBlock__filter_btn" onClick={handleArtistFilterClick}>
+          <button
+            className="centerBlock__filter_btn"
+            onClick={handleArtistFilterClick}
+          >
             исполнителю
           </button>
           {
             // условный рендеринг меню, если visibleArtistMenu === true, то будет показан блок .list
             // иначе это меню не будет отрисованно
-            visibleArtistMenu &&
-            <ul className="list">
-              {/* тут мы рендерим список с помощью массива и метода .map */}
-              {
-                // добавляем обработчик клика для элементов выпадающего списка
-                // при клике на него мы должны в state artistFilter сохранить выбранного артиста
-                artists.map(item => <li className="list-item-musician" key={item.id} onClick={() => handleArtistFilterSelect(item.name)}>{item.name}</li>)  
-              }
-            </ul>
-
-          }
-
-        </div>
-        <div className="dropdown">
-        <button className="centerBlock__filter_btn" onClick={handleYearFilterClick}>году выпуска</button>
-        {
-            // условный рендеринг меню, если visibleGenreMenu === true, то будет показан блок .list
-            // иначе это меню не будет отрисованно
-            
-            visibleYearMenu &&
-            <ul className="list">
-            {/* тут мы рендерим список с помощью массива и метода .map */}
-            {
-              years.map(item => <li className="list-item-year" key={item.id} onClick={() => handleGenreFilterSelect(item.name)}>{item.name}</li>)
-            }
-          </ul>
+            visibleArtistMenu && (
+              <ul className="list">
+                {/* тут мы рендерим список с помощью массива и метода .map */}
+                {
+                  // добавляем обработчик клика для элементов выпадающего списка
+                  // при клике на него мы должны в state artistFilter сохранить выбранного артиста
+                  artists.map((item) => (
+                    <li
+                      className="list-item-musician"
+                      key={item.id}
+                      onClick={() => handleArtistFilterSelect(item.name)}
+                    >
+                      {item.name}
+                    </li>
+                  ))
+                }
+              </ul>
+            )
           }
         </div>
         <div className="dropdown">
-          <button className="centerBlock__filter_btn" onClick={handleGenreFilterClick}>жанру</button>
+          <button
+            className="centerBlock__filter_btn"
+            onClick={handleYearFilterClick}
+          >
+            году выпуска
+          </button>
           {
             // условный рендеринг меню, если visibleGenreMenu === true, то будет показан блок .list
             // иначе это меню не будет отрисованно
-            
-            visibleGenreMenu &&
-            <ul className="list">
-            {/* тут мы рендерим список с помощью массива и метода .map */}
-            {
-              genres.map(item => <li className="list-item-genre" key={item.id} onClick={() => handleYearFilterSelect(item.name)}>{item.name}</li>)
-            }
-          </ul>
-          }
 
+            visibleYearMenu && (
+              <ul className="list">
+                {/* тут мы рендерим список с помощью массива и метода .map */}
+                {years.map((item) => (
+                  <li
+                    className="list-item-year"
+                    key={item.id}
+                    onClick={() => handleGenreFilterSelect(item.name)}
+                  >
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+        <div className="dropdown">
+          <button
+            className="centerBlock__filter_btn"
+            onClick={handleGenreFilterClick}
+          >
+            жанру
+          </button>
+          {
+            // условный рендеринг меню, если visibleGenreMenu === true, то будет показан блок .list
+            // иначе это меню не будет отрисованно
+
+            visibleGenreMenu && (
+              <ul className="list">
+                {/* тут мы рендерим список с помощью массива и метода .map */}
+                {genres.map((item) => (
+                  <li
+                    className="list-item-genre"
+                    key={item.id}
+                    onClick={() => handleYearFilterSelect(item.name)}
+                  >
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
+            )
+          }
         </div>
       </div>
       <div className="centerblock__content">
@@ -248,19 +284,15 @@ function CenterBlock() {
               return <Track .... />
             })
           */}
-          {/* tracks.map((track) =>  {
-            return <Track />
-          }) */}
-         <Track />
-          <Track />
-          <Track />
-          <Track />
-          <Track />
-          <Track />
-          <Track />
-          <Track />
-          <Track />
-          <Track /> 
+          {defaultTracks.map((trackItem, trackIndex) => (
+            <Track
+              key={trackIndex}
+              name={trackItem.name}
+              label={trackItem.label}
+              genre={trackItem.genre}
+              year={trackItem.year}
+            />     
+          ))}
           <div className="navigationMenu">
             <button className="navigationMenu__link navigationMenu__link_daily-playList"></button>
             <button className="navigationMenu__link navigationMenu__link_top-100"></button>
