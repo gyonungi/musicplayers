@@ -1,7 +1,7 @@
 import React from 'react'
 import './Track.css'
 
-const Track = () => {
+const Track = (props) => {
   return (
       <div className="track">
         <div className="track__title">
@@ -12,18 +12,18 @@ const Track = () => {
           </div>
           <div className="track__title-text">
             <a className="track__title-link" href="http://">
-              Guilt <span className="track__title-span"></span>
+            {props.name} Mode <span className="track__title-span"></span>
             </a>
           </div>
         </div>
         <div className="track__author">
           <a className="track__author-link" href="http://">
-            Nero
+          {props.label}
           </a>
         </div>
         <div className="track__album">
           <a className="track__album-link" href="http://">
-            Welcome Reality
+           {props.album}
           </a>
         </div>
         <div className="track__time">

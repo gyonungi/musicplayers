@@ -23,10 +23,12 @@
 }
 
 .track__title-svg {
-    width: 18px;
-    height: 17px;
+    width: 35px;
+    height: 20px;
     fill: transparent;
     stroke: #4E4E4E;
+    background-image: url(/src/images/icon/note.svg);
+    background-repeat: no-repeat;
 }
 
 .track__title-link {
