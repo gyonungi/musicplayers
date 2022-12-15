@@ -89,6 +89,7 @@ const defaultTracks = [
     name: "AirPlane Mode",
     label: "Bones",
     genres: "Hip-Hop",
+    album: "Bye",
     year: "2020",
   },
   {
@@ -96,6 +97,7 @@ const defaultTracks = [
     name: "Loading",
     label: "Central Cee",
     genres: "Techno",
+    album: "Under",
     year: "2021",
   },
   {
@@ -103,6 +105,7 @@ const defaultTracks = [
     name: "Save",
     label: "Cold Carti",
     genres: "Elektro",
+    album: "Welcome",
     year: "2019",
   },
   {
@@ -110,6 +113,7 @@ const defaultTracks = [
     name: "My Way",
     label: "Calvin Harris",
     genres: "Hip-Hop",
+    album: "Hello",
     year: "2018",
   },
   {
@@ -117,6 +121,7 @@ const defaultTracks = [
     name: "AirPlane Mode",
     label: "Bones",
     genres: "Frank Sinatra",
+    album: "Beautiful",
     year: "2017",
   },
   {
@@ -124,6 +129,7 @@ const defaultTracks = [
     name: "Bad",
     label: "Michael Jackson",
     genres: "R&B",
+    album: "Welcome",
     year: "2016",
   },
 ];
@@ -232,7 +238,7 @@ function CenterBlock() {
                   <li
                     className="list-item-year"
                     key={item.id}
-                    onClick={() => handleGenreFilterSelect(item.name)}
+                    onClick={() => handleYearFilterSelect(item.name)}
                   >
                     {item.name}
                   </li>
@@ -259,7 +265,7 @@ function CenterBlock() {
                   <li
                     className="list-item-genre"
                     key={item.id}
-                    onClick={() => handleYearFilterSelect(item.name)}
+                    onClick={() => handleGenreFilterSelect(item.name)}
                   >
                     {item.name}
                   </li>
@@ -284,12 +290,18 @@ function CenterBlock() {
               return <Track .... />
             })
           */}
-          {defaultTracks.map((trackItem, trackIndex) => (
+          {defaultTracks.filter((trackItem) =>{
+            return trackItem.label.includes(artistFilter) && 
+            trackItem.year.includes(yearFilter) &&
+            trackItem.genres.includes(genreFilter)
+          })
+          .map((trackItem, trackIndex) => (
             <Track
               key={trackIndex}
               name={trackItem.name}
               label={trackItem.label}
               genre={trackItem.genre}
+              album={trackItem.album}
               year={trackItem.year}
             />     
           ))}
