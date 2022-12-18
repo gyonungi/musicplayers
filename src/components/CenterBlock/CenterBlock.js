@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Skeleton from "../Skeleton/Skeleton"
 
 import Track from "../Track/Track";
 import "./CenterBlock.css";
@@ -296,7 +297,7 @@ function CenterBlock() {
             trackItem.genres.includes(genreFilter)
           })
           .map((trackItem, trackIndex) => (
-            <Track
+            <Skeleton Track
               key={trackIndex}
               name={trackItem.name}
               label={trackItem.label}
@@ -304,12 +305,7 @@ function CenterBlock() {
               album={trackItem.album}
               year={trackItem.year}
             />     
-          ))}
-          <div className="navigationMenu">
-            <button className="navigationMenu__link navigationMenu__link_daily-playList"></button>
-            <button className="navigationMenu__link navigationMenu__link_top-100"></button>
-            <button className="navigationMenu__link navigationMenu__link_indy"></button>
-          </div>
+          ))}       
         </div>
       </div>
     </div>
