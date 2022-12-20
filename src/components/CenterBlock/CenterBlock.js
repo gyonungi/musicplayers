@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Skeleton from "../Skeleton/Skeleton"
+import { FilterTracks } from "./FilterTracks";
 
 import Track from "../Track/Track";
 import "./CenterBlock.css";
-// массив артистов можно вынести за функцию
+
+// массив фильтров по артистам
 const artists = [
   {
     id: 2,
@@ -30,7 +32,7 @@ const artists = [
     name: "Cold Carti",
   },
 ];
-
+// массив фильтров по жанрам
 const genres = [
   {
     id: 1,
@@ -57,6 +59,7 @@ const genres = [
     name: "R&B",
   },
 ];
+// массив фильтров по году
 const years = [
   {
     id: 1,
@@ -83,7 +86,7 @@ const years = [
     name: "2016",
   },
 ];
-
+// массив треков
 const defaultTracks = [
   {
     id: 1,
@@ -136,145 +139,71 @@ const defaultTracks = [
 ];
 
 function CenterBlock() {
-  // затем кладем массив треков в локальное состояние
+  // состояние для эмуляции режима загрузки данных
+  const [loading, setLoading] = useState(true);
+  // состояние со списком треков
   const [tracks, setTracks] = useState(defaultTracks);
-  // состояние для отображения видимости меню для фильтра по исполнителю
-  const [visibleArtistMenu, setVisibleArtistMenu] = useState(false);
-  // состояние для отображения видимости меню для фильтра по жанру
-  const [visibleGenreMenu, setVisibleGenreMenu] = useState(false);
-  const [visibleYearMenu, setVisibleYearMenu] = useState(false);
 
   // создаем состояния для хранения ЗНАЧЕНИЙ по каждому типу фильтров
   // изначально фильтр пустой
-  const [artistFilter, setArtistFilter] = useState("");
-  const [yearFilter, setYearFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("");
+  const [artistFilter, setArtistFilter] = useState([]);
+  const [yearFilter, setYearFilter] = useState([]);
+  const [genreFilter, setGenreFilter] = useState([]);
 
-  // обработка клика по кнопке фильтра "Исполнитель"
-  const handleArtistFilterClick = () => {
-    let listItem = artists.map((artist) => (
-      <li key={artist.id}>{artist.name}</li>
-    ));
-
-    setVisibleArtistMenu(!visibleArtistMenu);
-  };
-
-  // обработка клика по кнопке фильтра "Жанр"
-  const handleGenreFilterClick = () => {
-    let listItemGenre = genres.map((genre) => (
-      <li key={genre.id}>{genre.name}</li>
-    ));
-    // используй инвертирование булевого значения с помощью оператора !
-    // это поможет включать и выключать меню при каждом клике
-    setVisibleGenreMenu(!visibleGenreMenu);
-  };
-  // обработка клика по кнопке фильтра "Год"
-  const handleYearFilterClick = () => {
-    let listItemYear = years.map((year) => <li key={year.id}>{year.name}</li>);
-    // используй инвертирование булевого значения с помощью оператора !
-    // это поможет включать и выключать меню при каждом клике
-    setVisibleYearMenu(!visibleYearMenu);
-  };
 
   const handleArtistFilterSelect = (artist) => {
-    setArtistFilter(artist);
+    // обновили состояние выбранного фильтра
+    // если выбрали тот же фильтр, что и был установлен, то просто отключаем фильтрацию
+    setArtistFilter((prevState) => {
+      if (prevState.includes(artist)) {
+        return prevState.filter(item => item !== artist);
+      } else return [...prevState, artist]
+    });
   };
+
   const handleGenreFilterSelect = (genre) => {
-    setGenreFilter(genre);
+    // обновили состояние выбранного фильтра
+    // если выбрали тот же фильтр, что и был установлен, то просто отключаем фильтрацию
+    setGenreFilter((prevState) => {
+      if (prevState.includes(genre)) {
+        return prevState.filter(item => item !== genre);
+      } else return [...prevState, genre]
+    });
   };
+
   const handleYearFilterSelect = (year) => {
-    setYearFilter(year);
+    // обновили состояние выбранного фильтра
+    // если выбрали тот же фильтр, что и был установлен, то просто отключаем фильтрацию
+    setYearFilter((prevState) => {
+      if (prevState.includes(year)) {
+        return prevState.filter(item => item !== year);
+      } else return [...prevState, year]
+    });
   };
+
+  // фильтрация треков
+  useEffect(() => {
+    const filteredArtist = artistFilter.length ? defaultTracks.filter(track => artistFilter.includes(track.label)) : defaultTracks;
+    const filteredYears = yearFilter.length ? filteredArtist.filter(track => yearFilter.includes(track.year)) : filteredArtist;
+    const filteredGenres = genreFilter.length ? filteredYears.filter(track => genreFilter.includes(track.genres)) : filteredYears;
+    setTracks(filteredGenres)
+  }, [artistFilter, genreFilter, yearFilter])
+
+  // через 5 секунд, переключаем состояние загрузки
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000)
+  }, [])
 
   return (
     <div className="centerBlock">
       <h2 className="centeBlock__title">Треки</h2>
       <div className="centerBlock__filter">
         <h3 className="centerBlock__filter_title">Искать по:</h3>
-        <div className="dropdown">
-          <button
-            className="centerBlock__filter_btn"
-            onClick={handleArtistFilterClick}
-          >
-            исполнителю
-          </button>
-          {
-            // условный рендеринг меню, если visibleArtistMenu === true, то будет показан блок .list
-            // иначе это меню не будет отрисованно
-            visibleArtistMenu && (
-              <ul className="list">
-                {/* тут мы рендерим список с помощью массива и метода .map */}
-                {
-                  // добавляем обработчик клика для элементов выпадающего списка
-                  // при клике на него мы должны в state artistFilter сохранить выбранного артиста
-                  artists.map((item) => (
-                    <li
-                      className="list-item-musician"
-                      key={item.id}
-                      onClick={() => handleArtistFilterSelect(item.name)}
-                    >
-                      {item.name}
-                    </li>
-                  ))
-                }
-              </ul>
-            )
-          }
-        </div>
-        <div className="dropdown">
-          <button
-            className="centerBlock__filter_btn"
-            onClick={handleYearFilterClick}
-          >
-            году выпуска
-          </button>
-          {
-            // условный рендеринг меню, если visibleGenreMenu === true, то будет показан блок .list
-            // иначе это меню не будет отрисованно
-
-            visibleYearMenu && (
-              <ul className="list">
-                {/* тут мы рендерим список с помощью массива и метода .map */}
-                {years.map((item) => (
-                  <li
-                    className="list-item-year"
-                    key={item.id}
-                    onClick={() => handleYearFilterSelect(item.name)}
-                  >
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            )
-          }
-        </div>
-        <div className="dropdown">
-          <button
-            className="centerBlock__filter_btn"
-            onClick={handleGenreFilterClick}
-          >
-            жанру
-          </button>
-          {
-            // условный рендеринг меню, если visibleGenreMenu === true, то будет показан блок .list
-            // иначе это меню не будет отрисованно
-
-            visibleGenreMenu && (
-              <ul className="list">
-                {/* тут мы рендерим список с помощью массива и метода .map */}
-                {genres.map((item) => (
-                  <li
-                    className="list-item-genre"
-                    key={item.id}
-                    onClick={() => handleGenreFilterSelect(item.name)}
-                  >
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            )
-          }
-        </div>
+        <FilterTracks label="исполнителю" options={artists} filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
+        <FilterTracks label="году выпуска" options={years} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
+        <FilterTracks label="жанру" options={genres} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
       </div>
       <div className="centerblock__content">
         <div className="centerblock__playlist-title">
@@ -285,27 +214,30 @@ function CenterBlock() {
         </div>
 
         <div className="centerblock__playlist">
-          {/* тут используем метод .map для отрисовки списка треков
-            только нужно будет передавать ему пропсы из массива tracks
-            tracks.map((track) => {
-              return <Track .... />
-            })
-          */}
-          {defaultTracks.filter((trackItem) =>{
-            return trackItem.label.includes(artistFilter) && 
-            trackItem.year.includes(yearFilter) &&
-            trackItem.genres.includes(genreFilter)
-          })
-          .map((trackItem, trackIndex) => (
-            <Skeleton Track
-              key={trackIndex}
-              name={trackItem.name}
-              label={trackItem.label}
-              genre={trackItem.genre}
-              album={trackItem.album}
-              year={trackItem.year}
-            />     
-          ))}       
+          {
+            loading ?
+              // если "загрузка" еще идет, то показываем Скелетон
+              defaultTracks.map((_, index) => <Skeleton key={index} />) :
+
+              // иначе показываем список треков
+              tracks
+                // .filter((trackItem) => {
+
+                //   return trackItem.label.includes(artistFilter) &&
+                //     trackItem.year.includes(yearFilter) &&
+                //     trackItem.genres.includes(genreFilter)
+                // })
+                .map((trackItem, trackIndex) => (
+                  <Track
+                    key={trackIndex}
+                    name={trackItem.name}
+                    label={trackItem.label}
+                    genre={trackItem.genre}
+                    album={trackItem.album}
+                    year={trackItem.year}
+                  />
+                ))
+          }
         </div>
       </div>
     </div>

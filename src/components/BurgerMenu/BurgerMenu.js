@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-
+import { StyledBurgenLinkListDiv} from "./BurgerMenu.jsx";
 import "./BurgerMenu.css";
+import * as StyledBurgenLinka from "./BurgerMenu.jsx"
+
 
 function BurgerMenu() {
     const [menuVisible, setmenuVisible] = useState(false);
@@ -15,16 +17,17 @@ function BurgerMenu() {
         {
         menuVisible &&
             <div className="burger-menu__link-list">
+                <StyledBurgenLinkListDiv/>
                 <a exact to="/" className="burger-menu__link" >
-                    Главное
+                   <StyledBurgenLinka/>Главное
                 </a>
 
                 <a to="/user-playlist" className="burger-menu__link" >
-                    Фильмы
+                <StyledBurgenLinka/>  Фильмы
                 </a>
 
                 <a to="/signin" className="burger-menu__link" >
-                    Войти
+                <StyledBurgenLinka/>  Войти
                 </a>
             </div>
 }

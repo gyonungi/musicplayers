@@ -8,15 +8,17 @@ import Playerbar from "../Player/Player";
 import "./Main.css"; 
 
 
-function Main() { 
+
+function Main(props) { 
     return ( 
        <div>  <Header/>
             <section className="main">
-                <BurgerMenu/>
+                <BurgerMenu/>   
                 <CenterBlock/>
                 <NavigationMenu/>
             </section>
             <Track/>
+            
             <Playerbar/>
         </div>
     )
