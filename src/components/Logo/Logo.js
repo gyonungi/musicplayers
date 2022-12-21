@@ -2,7 +2,7 @@
 import React from 'react'
 
 import logoWhite from "../../images/logoWhite.png";
-import "./Logo.css";
+
 
 function Logo() {
   return (
