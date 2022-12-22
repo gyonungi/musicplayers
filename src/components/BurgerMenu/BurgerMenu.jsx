@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import BurgerImage from "../../images/icon/hamburger_icon_153362.svg"
 
-export const  StyledBurgenLinkList = styled.div`
+export const  StyledBurgerLinkList = styled.div`
     display: flex;
     flex-direction: column;
     padding: 18px 0 10px 0;
@@ -9,7 +10,7 @@ export const  StyledBurgenLinkList = styled.div`
     `;
 
 
-    export const StyledBurgenLink = styled.a`
+    export const StyledBurgerLink = styled.a`
     color: #FFFFFF;
     font-weight: 400;
     font-size: 16px;
@@ -19,10 +20,10 @@ export const  StyledBurgenLinkList = styled.div`
     min-width: 208px;
     `;
 
-    export const StyledBurgenButton = styled.button`
+    export const StyledBurgerButton = styled.button`
     border: none;
     background-color: transparent;
-    background-image: url(../../images/icon/hamburger_icon_153362.svg);
+    background-image: url(${BurgerImage});
     background-position: center;
     background-repeat: no-repeat;
     width: 20px;

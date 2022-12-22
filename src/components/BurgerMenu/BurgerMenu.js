@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import "./BurgerMenu.css";
-import {StyledBurgenLinkList,StyledBurgenLink} from "./BurgerMenu.jsx"
+
+import {StyledBurgerLinkList,StyledBurgerLink,StyledBurgerButton} from "./BurgerMenu.jsx"
 
 
 function BurgerMenu() {
@@ -13,15 +13,15 @@ function BurgerMenu() {
     }
     return (
         <div className={`burger-menu`}>
-            <button className="burger-menu__close-btn" type="button" onClick={handleClick} />
+           <StyledBurgerButton onClick={handleClick}> </StyledBurgerButton>
         {
         menuVisible &&
            
-               <StyledBurgenLinkList>
-                 <StyledBurgenLink exact to = "/">Главное </StyledBurgenLink>
-                <StyledBurgenLink exact to = "/user-playlist">Фильмы </StyledBurgenLink>
-                <StyledBurgenLink exact to = "/signing">Войти </StyledBurgenLink>
-                </StyledBurgenLinkList>
+               <StyledBurgerLinkList>
+                 <StyledBurgerLink exact to = "/">Главное </StyledBurgerLink>
+                <StyledBurgerLink exact to = "/user-playlist">Фильмы </StyledBurgerLink>
+                <StyledBurgerLink exact to = "/signing">Войти </StyledBurgerLink>
+                </StyledBurgerLinkList>
           
 }
         
