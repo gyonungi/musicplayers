@@ -1,38 +1,40 @@
 import React from 'react'
-import './Track.css'
+
+import { TrackDiv,TrackTitle,TrackTitleImg,TrackTitleSVG,TrackTitleText,TrackTitleLink,TrackTitleSpan,TrackAuthor,TrackAuthorLink,TrackAlbum,TrackAlbumLink,TrackTime,TrackTimeSVG,TrackTimeText } from './Track.jsx'
+
 
 const Track = (props) => {
   return (
-      <div className="track">
-        <div className="track__title">
-          <div className="track__title-image">
-            <svg className="track__title-svg" alt="music">
+      <TrackDiv>
+        <TrackTitle>
+          <TrackTitleImg>
+            <TrackTitleSVG >
               <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-            </svg>
-          </div>
-          <div className="track__title-text">
-            <a className="track__title-link" href="http://">
-            {props.name} Mode <span className="track__title-span"></span>
-            </a>
-          </div>
-        </div>
-        <div className="track__author">
-          <a className="track__author-link" href="http://">
+            </TrackTitleSVG>
+          </TrackTitleImg>
+          <TrackTitleText>
+            <TrackTitleLink  href="http://">
+            {props.name} Mode <TrackTitleSpan></TrackTitleSpan>
+            </TrackTitleLink>
+          </TrackTitleText>
+        </TrackTitle>
+        <TrackAuthor>
+          <TrackAuthorLink href="http://">
           {props.label}
-          </a>
-        </div>
-        <div className="track__album">
-          <a className="track__album-link" href="http://">
+          </TrackAuthorLink>
+        </TrackAuthor>
+        <TrackAlbum>
+          <TrackAlbumLink href="http://">
            {props.album}
-          </a>
-        </div>
-        <div className="track__time">
-          <svg className="track__time-svg" alt="time">
+          </TrackAlbumLink>
+        </TrackAlbum>
+        <TrackTime>
+          <TrackTimeSVG alt="time">
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-          </svg>
-          <span className="track__time-text">4:44</span>
-        </div>
-      </div>
+          </TrackTimeSVG>
+          <TrackTimeText >4:44</TrackTimeText>
+        </TrackTime>
+      </TrackDiv>
    
   )
 }

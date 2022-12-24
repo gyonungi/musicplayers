@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "../Skeleton/Skeleton"
 import { FilterTracks } from "./FilterTracks";
+import { CenterBlockDiv,CenterTitle,CenterFilter,CenterFilterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.jsx";
 
 import Track from "../Track/Track";
 import "./CenterBlock.css";
@@ -197,23 +198,23 @@ function CenterBlock() {
   }, [])
 
   return (
-    <div className="centerBlock">
-      <h2 className="centeBlock__title">Треки</h2>
-      <div className="centerBlock__filter">
-        <h3 className="centerBlock__filter_title">Искать по:</h3>
+   <CenterBlockDiv>
+      <CenterTitle className="centeBlock__title">Треки</CenterTitle>
+      <CenterFilter>
+        <CenterFilterTitle >Искать по:</CenterFilterTitle>
         <FilterTracks label="исполнителю" options={artists} filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
         <FilterTracks label="году выпуска" options={years} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
         <FilterTracks label="жанру" options={genres} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
-      </div>
-      <div className="centerblock__content">
-        <div className="centerblock__playlist-title">
-          <div className="centerblock__playlist-col col1">Трек</div>
-          <div className="centerblock__playlist-col col2">ИСПОЛНИТЕЛЬ</div>
-          <div className="centerblock__playlist-col col3">АЛЬБОМ</div>
-          <div className="centerblock__playlist-col col4">◴</div>
-        </div>
+      </CenterFilter>
+      <CenterblockContent>
+        <CenterPlaylistTitle >
+          <CenterPlaylistCol1 className="centerblock__playlist-col col1">Трек</CenterPlaylistCol1>
+          <CenterPlaylistCol2 className="centerblock__playlist-col col2">ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
+          <CenterPlaylistCol3 className="centerblock__playlist-col col3">АЛЬБОМ</CenterPlaylistCol3>
+          <CenterPlaylistCol4 className="centerblock__playlist-col col4">◴</CenterPlaylistCol4>
+        </CenterPlaylistTitle>
 
-        <div className="centerblock__playlist">
+        <CenterPlaylist>
           {
             loading ?
               // если "загрузка" еще идет, то показываем Скелетон
@@ -238,9 +239,9 @@ function CenterBlock() {
                   />
                 ))
           }
-        </div>
-      </div>
-    </div>
+        </CenterPlaylist>
+      </CenterblockContent>
+    </CenterBlockDiv>
   );
 }
 
