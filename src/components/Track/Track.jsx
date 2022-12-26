@@ -81,9 +81,6 @@ line-height: 24px;
 color: #696969;
 `;
 
-export const TrackTime = styled.div`
-   
-`;
 
 export const TrackTimeSVG = styled.svg`
  width: 14px;
@@ -91,9 +88,6 @@ export const TrackTimeSVG = styled.svg`
     margin-right: 17px;
     fill: transparent;
     stroke: #696969;
-`;
-export const TrackTimeUse = styled.use`
-
 `;
 
 export const TrackTimeText = styled.span`

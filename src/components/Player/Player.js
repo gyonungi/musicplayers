@@ -1,94 +1,95 @@
 import React from "react";
 import "./Player.css";
 
+import { BarDiv,BarContent,BarPlayerProgress,BarPlayerBlock,BarPlayer,BarPlayerControls,BarPlayerBtnPrev,BarPlayerBtnSVG,BarPlayerPlay,BarPlayerPlaySVG,BarPlayerBtnNext,BarPlayerBtnNextSVG,BarPlayerBtnRepeat,BarPlayerBtnRepeatSVG,BarPlayerBtnShuffle,BarPlayerBtnShuffleSVG,PlayerTrackPlay,PlayerTrackContain,PlayerTrackImage,TrackPlayerTrackSVG,PlayerTrackAuthor,PlayerTrackAuthorLink,PlayerTrackAlbum,PlayerTrackAlbumLink,PlayerTrackLikeDis,PlayerTrackLike,TrackPlayerTrackLikeSVG,PlayerTrackDisLike,TrackPlayerTrackDisLikeSVG,BarVolumeBlock,BarVolumeContent,BarVolumeImage,BarVolumeSVG,BarVolumeProgress,BarVolumeProgressLine } from "./Player.jsx";
+
 function Playerbar() {
   return (
-    <div class="bar">
-      <div class="bar__content">
-        <div class="bar__player-progress"></div>
-        <div class="bar__player-block">
-          <div class="bar__player player">
-            <div class="player__controls">
-              <div class="player__btn-prev">
-                <svg class="player__btn-prev-svg" alt="prev">
+    <BarDiv>
+      <BarContent>
+        <BarPlayerProgress></BarPlayerProgress>
+        <BarPlayerBlock>
+          <BarPlayer>
+            <BarPlayerControls>
+              <BarPlayerBtnPrev>
+                <BarPlayerBtnSVG >
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
-                </svg>
-              </div>
-              <div class="player__btn-play _btn">
-                <svg class="player__btn-play-svg" alt="play">
+                </BarPlayerBtnSVG>
+              </BarPlayerBtnPrev>
+              <BarPlayerPlay>
+                <BarPlayerPlaySVG>
                   <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
-                </svg>
-              </div>
-              <div class="player__btn-next">
-                <svg class="player__btn-next-svg" alt="next">
+                </BarPlayerPlaySVG>
+              </BarPlayerPlay>
+              <BarPlayerBtnNext>
+                <BarPlayerBtnNextSVG>
                   <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
-                </svg>
-              </div>
-              <div class="player__btn-repeat _btn-icon">
-                <svg class="player__btn-repeat-svg" alt="repeat">
+                </BarPlayerBtnNextSVG>
+              </BarPlayerBtnNext>
+              <BarPlayerBtnRepeat>
+                <BarPlayerBtnRepeatSVG>
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
-                </svg>
-              </div>
-              <div class="player__btn-shuffle _btn-icon">
-                <svg class="player__btn-shuffle-svg" alt="shuffle">
+                </BarPlayerBtnRepeatSVG>
+              </BarPlayerBtnRepeat>
+              <BarPlayerBtnShuffle>
+                <BarPlayerBtnShuffleSVG>
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
-                </svg>
-              </div>
-            </div>
+                </BarPlayerBtnShuffleSVG>
+              </BarPlayerBtnShuffle>
+            </BarPlayerControls>
 
-            <div class="player__track-play track-play">
-              <div class="track-play__contain">
-                <div class="track-play__image">
-                  <svg class="track-play__svg" alt="music">
+            <PlayerTrackPlay>
+              <PlayerTrackContain>
+                <PlayerTrackImage>
+                  <TrackPlayerTrackSVG>
                     <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                  </svg>
-                </div>
-                <div class="track-play__author">
-                  <a class="track-play__author-link" href="http://">
+                  </TrackPlayerTrackSVG>
+                </PlayerTrackImage>
+                <PlayerTrackAuthor>
+                  <PlayerTrackAuthorLink href="http://">
                     Ты та...
-                  </a>
-                </div>
-                <div class="track-play__album">
-                  <a class="track-play__album-link" href="http://">
+                  </PlayerTrackAuthorLink>
+                </PlayerTrackAuthor>
+                <PlayerTrackAlbum>
+                  <PlayerTrackAlbumLink href="http://">
                     Баста
-                  </a>
-                </div>
-              </div>
+                  </PlayerTrackAlbumLink>
+                </PlayerTrackAlbum>
+              </PlayerTrackContain>
 
-              <div class="track-play__like-dis">
-                <div class="track-play__like _btn-icon">
-                  <svg class="track-play__like-svg" alt="like">
+              <PlayerTrackLikeDis>
+                <PlayerTrackLike>
+                  <TrackPlayerTrackLikeSVG alt="like">
                     <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                  </svg>
-                </div>
-                <div class="track-play__dislike _btn-icon">
-                  <svg class="track-play__dislike-svg" alt="dislike">
+                  </TrackPlayerTrackLikeSVG>
+                </PlayerTrackLike>
+                <PlayerTrackDisLike>
+                  <TrackPlayerTrackDisLikeSVG alt="dislike">
                     <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
+                  </TrackPlayerTrackDisLikeSVG>
+                </PlayerTrackDisLike>
+              </PlayerTrackLikeDis>
+            </PlayerTrackPlay>
+          </BarPlayer>
 
-          <div class="bar__volume-block volume">
-            <div class="volume__content">
-              <div class="volume__image">
-                <svg class="volume__svg" alt="volume">
+          <BarVolumeBlock>
+            <BarVolumeContent>
+              <BarVolumeImage>
+                <BarVolumeSVG alt="volume">
                   <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
-                </svg>
-              </div>
-              <div class="volume__progress _btn">
-                <input
-                  class="volume__progress-line _btn"
+                </BarVolumeSVG>
+              </BarVolumeImage>
+              <BarVolumeProgress>
+                <BarVolumeProgressLine
                   type="range"
                   name="range"
-                ></input>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                ></BarVolumeProgressLine>
+              </BarVolumeProgress>
+            </BarVolumeContent>
+          </BarVolumeBlock>
+        </BarPlayerBlock>
+      </BarContent>
+    </BarDiv>
   );
 }
 export default Playerbar;

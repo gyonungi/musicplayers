@@ -28,12 +28,12 @@ const Track = (props) => {
            {props.album}
           </TrackAlbumLink>
         </TrackAlbum>
-        <TrackTime>
+        <div className="track__time">
           <TrackTimeSVG alt="time">
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </TrackTimeSVG>
           <TrackTimeText >4:44</TrackTimeText>
-        </TrackTime>
+        </div>
       </TrackDiv>
    
   )
