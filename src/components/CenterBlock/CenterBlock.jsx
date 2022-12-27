@@ -71,3 +71,21 @@ export const CenterPlaylistCol4= styled.div`
     width: 60px;
 `;
 
+export const DropDownDiv= styled.div`
+     position: relative;
+    display: inline-block;
+`;
+
+export const FilterListItem= styled.li`
+     color: #313131;
+    text-decoration: none;
+    display: block;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+`;

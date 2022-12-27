@@ -1,5 +1,5 @@
 import React from "react";
-import "./Player.css";
+
 
 import { BarDiv,BarContent,BarPlayerProgress,BarPlayerBlock,BarPlayer,BarPlayerControls,BarPlayerBtnPrev,BarPlayerBtnSVG,BarPlayerPlay,BarPlayerPlaySVG,BarPlayerBtnNext,BarPlayerBtnNextSVG,BarPlayerBtnRepeat,BarPlayerBtnRepeatSVG,BarPlayerBtnShuffle,BarPlayerBtnShuffleSVG,PlayerTrackPlay,PlayerTrackContain,PlayerTrackImage,TrackPlayerTrackSVG,PlayerTrackAuthor,PlayerTrackAuthorLink,PlayerTrackAlbum,PlayerTrackAlbumLink,PlayerTrackLikeDis,PlayerTrackLike,TrackPlayerTrackLikeSVG,PlayerTrackDisLike,TrackPlayerTrackDisLikeSVG,BarVolumeBlock,BarVolumeContent,BarVolumeImage,BarVolumeSVG,BarVolumeProgress,BarVolumeProgressLine } from "./Player.jsx";
 

@@ -5,18 +5,18 @@ import Track from "../Track/Track";
 import CenterBlock from "../CenterBlock/CenterBlock";
 import NavigationMenu from "../NavigationMenu/NavigationMenu";
 import Playerbar from "../Player/Player";
-import "./Main.css"; 
+import { MainSelect } from "./Main";
 
 
 
-function Main(props) { 
+function Main() { 
     return ( 
        <div>  <Header/>
-            <section className="main">
+            <MainSelect>
                 <BurgerMenu/>   
                 <CenterBlock/>
                 <NavigationMenu/>
-            </section>
+            </MainSelect>
             <Track/>
             
             <Playerbar/>
