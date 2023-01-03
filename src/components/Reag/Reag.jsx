@@ -6,7 +6,7 @@ width: 278.5px;
 height: 0px;
 left: 40.5px;
 top: 208px;
-
+disabled: true;
 border: 1px solid #D0CECE;
 `;
 
@@ -16,7 +16,7 @@ width: 278.5px;
 height: 0px;
 left: 40.5px;
 top: 208px;
-
+disabled: true;
 border: 1px solid #D0CECE;
 `;
 
