@@ -1,15 +1,15 @@
 import React from "react";
-import { navigationMenuDiv,NavigationMenuLinkDailyPlayList,NavigationMenuLinkTop100,NavigationMenuLinkIndy } from "./NagivationMenu"; 
+import { NavigationMenuDiv,NavigationMenuLinkDailyPlayList,NavigationMenuLinkTop100,NavigationMenuLinkIndy } from "./NagivationMenu"; 
 
 
 
 function NavigationMenu() {
     return (
-        <navigationMenuDiv>
+        <NavigationMenuDiv>
             <NavigationMenuLinkDailyPlayList></NavigationMenuLinkDailyPlayList>
             <NavigationMenuLinkTop100 ></NavigationMenuLinkTop100>
             <NavigationMenuLinkIndy ></NavigationMenuLinkIndy>
-        </navigationMenuDiv>
+        </NavigationMenuDiv>
     );
 }
 

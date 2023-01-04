@@ -3,7 +3,7 @@ import DailyPlayListImg from "../../images/playlist01.png"
 import Top100Img from "../../images/playlist02.png"
 import IndyImg from "../../images/playlist03.png"
 
-export const navigationMenuDiv = styled.div`
+export const NavigationMenuDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
