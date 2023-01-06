@@ -1,23 +1,38 @@
-
+import { useNavigate } from 'react-router-dom';
 import React from 'react'
 //import { Route, Switch} from 'react-router-dom'
 import RegistrLogo from "../../images/logoDark.png"
-import { RegBackground,RegPass,RegLog,RegLogButton,RegButton,RegImg } from './Registr.jsx';
+import { RegBackground,RegPass,RegLog,RegButton,RegImg,DivPassLog,RegContent,RegPassHr } from './Registr.jsx';
 
-const Registr = ()  => {
-  
+export const Profile = () =>{
+  const navigate = useNavigate();
+
+
+const handleRegLogButton = () =>{
+  navigate("../Login",{replace:true});
+}
+}
+
+const Login = ()  => {
+
+
   
   return (
     <RegBackground>
-      <RegImg src={RegistrLogo}/>
-      <div>
-      <RegLog placeholder='Логин'></RegLog>
-      <RegPass placeholder='Пароль'></RegPass>
-      </div>
-      <RegLogButton>Войти</RegLogButton>
-      <RegButton>Зарегистрироваться</RegButton>
+      <RegContent>
+        <RegImg src={RegistrLogo}/>
+        <DivPassLog>
+      <RegLog placeholder='Логин'/>
+      <RegPassHr/>
+      <RegPass placeholder='Пароль'/>
+      <RegPassHr/>
+      <RegPass placeholder='Повторите Пароль'/>
+      <RegPassHr/>
+      </DivPassLog>
+      <RegButton onclick = {handleRegLogButton}>Зарегистрироваться</RegButton>
+      </RegContent>
     </RegBackground>
+   
   );
 };
-
-export default Registr;
+export default Login;
