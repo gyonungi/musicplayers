@@ -4,16 +4,19 @@ import React from 'react'
 import RegistrLogo from "../../images/logoDark.png"
 import { RegBackground,RegPass,RegLog,RegButton,RegImg,DivPassLog,RegContent,RegPassHr } from './Registr.jsx';
 
-export const Profile = () =>{
+
+export const Registr = () =>{
   const navigate = useNavigate();
 
 
-const handleRegLogButton = () =>{
-  navigate("../Login",{replace:true});
-}
+
+  const handleRegLogButton = () =>{
+    navigate("/login");
 }
 
-const Login = ()  => {
+
+
+export default const Login = ()  => {
 
 
   
@@ -29,10 +32,9 @@ const Login = ()  => {
       <RegPass placeholder='Повторите Пароль'/>
       <RegPassHr/>
       </DivPassLog>
-      <RegButton onclick = {handleRegLogButton}>Зарегистрироваться</RegButton>
+      <RegButton onClick = {handleRegLogButton}>Зарегистрироваться</RegButton>
       </RegContent>
     </RegBackground>
-   
+}
   );
 };
-export default Login;
