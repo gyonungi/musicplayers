@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react'
 //import { Route, Switch} from 'react-router-dom'
-import RegistrLogo from "../../images/logoDark.png"
+
 import { RegBackground,RegPass,RegLog,RegButton,RegImg,DivPassLog,RegContent,RegPassHr } from './Registr.jsx';
 
+const RegistrLogo = "../../images/logoDark.png";
 
 export const Registr = () =>{
   const navigate = useNavigate();
@@ -15,11 +16,6 @@ export const Registr = () =>{
 }
 
 
-
-export default const Login = ()  => {
-
-
-  
   return (
     <RegBackground>
       <RegContent>
@@ -32,9 +28,10 @@ export default const Login = ()  => {
       <RegPass placeholder='Повторите Пароль'/>
       <RegPassHr/>
       </DivPassLog>
-      <RegButton onClick = {handleRegLogButton}>Зарегистрироваться</RegButton>
+      <RegButton onСlick={handleRegLogButton}>Зарегистрироваться</RegButton>
       </RegContent>
     </RegBackground>
-}
+   
   );
 };
+export default Registr;

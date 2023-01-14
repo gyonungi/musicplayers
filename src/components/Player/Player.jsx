@@ -101,6 +101,8 @@ export const BarPlayerPlay = styled.div`
   margin-right: 23px;
 `;
 
+
+
 export const BarPlayerPlaySVG= styled.svg`
 width: 22px;
 height: 20px;
