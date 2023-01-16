@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PlayerBtnPrevSVG from "../../images/icon/prev.svg"
 import PlayerPlaySVG from "../../images/icon/play.svg"
-import PlyaerBtnNextSVG from "../../images/icon/next.svg"
+import PlayerBtnNextSVG from "../../images/icon/next.svg"
 import PlayerBtnRepeatSVG from "../../images/icon/repeat.svg"
 import PlayerBtnShuffleSVG from "../../images/icon/shuffle.svg"
 import PlayerTrackSVG from "../../images/icon/note.svg"
@@ -128,7 +128,7 @@ export const BarPlayerBtnNextSVG= styled.svg`
     height: 14px;
     fill: inherit;
     stroke: #D9D9D9;
-    background-image: url(${PlyaerBtnNextSVG});
+    background-image: url(${PlayerBtnNextSVG});
 `;
 
 export const BarPlayerBtnRepeat = styled.div`
