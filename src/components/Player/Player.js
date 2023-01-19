@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { BarDiv,BarContent,BarPlayerProgress,BarPlayerBlock,BarPlayer,BarPlayerControls,BarPlayerBtnPrev,BarPlayerBtnSVG,BarPlayerPlay,BarPlayerPlaySVG,BarPlayerBtnNext,BarPlayerBtnNextSVG,BarPlayerBtnRepeat,BarPlayerBtnRepeatSVG,BarPlayerBtnShuffle,BarPlayerBtnShuffleSVG,PlayerTrackPlay,PlayerTrackContain,PlayerTrackImage,TrackPlayerTrackSVG,PlayerTrackAuthor,PlayerTrackAuthorLink,PlayerTrackAlbum,PlayerTrackAlbumLink,PlayerTrackLikeDis,PlayerTrackLike,TrackPlayerTrackLikeSVG,PlayerTrackDisLike,TrackPlayerTrackDisLikeSVG,BarVolumeBlock,BarVolumeContent,BarVolumeImage,BarVolumeSVG,BarVolumeProgress,BarVolumeProgressLine } from "./Player.jsx";
-
+import mainSong from '../../Public/Bobby_Marleni_Dropin.mp3';
 
 
 
@@ -9,8 +9,9 @@ import { BarDiv,BarContent,BarPlayerProgress,BarPlayerBlock,BarPlayer,BarPlayerC
 function Playerbar() {
   const audioRef  = useRef(null);
   const handleAudioPlay = () =>{
-    audioRef.current.focus();
+    audioRef.currentTime();
   }
+
   return (
     
     <BarDiv>
@@ -24,11 +25,11 @@ function Playerbar() {
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                 </BarPlayerBtnSVG>
               </BarPlayerBtnPrev>
-              <BarPlayerPlay onClick={handleAudioPlay}>
-              <audio controls ref={audioRef}>
-              <source  src="../../Public/Bobby_Marleni_Dropin.mp3" type="audio/mpeg"/>
+              <BarPlayerPlay >
+              <audio  controls textTracks ref={audioRef} >
+              <source  src={mainSong} type="audio/mpeg"/>
               </audio>
-                <BarPlayerPlaySVG>
+                <BarPlayerPlaySVG >
                 <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                 </BarPlayerPlaySVG>
               </BarPlayerPlay>
