@@ -8,6 +8,10 @@ import PlayerTrackSVG from "../../images/icon/note.svg"
 import PlayerTrackLikeSVG from "../../images/icon/like.svg"
 import PlayerTrackDislikeSVG from "../../images/icon/dislike.svg"
 
+export const BarPlayerAudio = styled.audio`
+display:none;
+`;
+
 export const BarDiv = styled.div`
 position: fixed;
     bottom: 0;

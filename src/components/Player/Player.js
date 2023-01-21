@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { BarDiv,BarContent,BarPlayerProgress,BarPlayerBlock,BarPlayer,BarPlayerControls,BarPlayerBtnPrev,BarPlayerBtnSVG,BarPlayerPlay,BarPlayerPlaySVG,BarPlayerBtnNext,BarPlayerBtnNextSVG,BarPlayerBtnRepeat,BarPlayerBtnRepeatSVG,BarPlayerBtnShuffle,BarPlayerBtnShuffleSVG,PlayerTrackPlay,PlayerTrackContain,PlayerTrackImage,TrackPlayerTrackSVG,PlayerTrackAuthor,PlayerTrackAuthorLink,PlayerTrackAlbum,PlayerTrackAlbumLink,PlayerTrackLikeDis,PlayerTrackLike,TrackPlayerTrackLikeSVG,PlayerTrackDisLike,TrackPlayerTrackDisLikeSVG,BarVolumeBlock,BarVolumeContent,BarVolumeImage,BarVolumeSVG,BarVolumeProgress,BarVolumeProgressLine } from "./Player.jsx";
+import React, { useEffect, useRef, useState } from "react";
+import { BarPlayerAudio,BarDiv,BarContent,BarPlayerProgress,BarPlayerBlock,BarPlayer,BarPlayerControls,BarPlayerBtnPrev,BarPlayerBtnSVG,BarPlayerPlay,BarPlayerPlaySVG,BarPlayerBtnNext,BarPlayerBtnNextSVG,BarPlayerBtnRepeat,BarPlayerBtnRepeatSVG,BarPlayerBtnShuffle,BarPlayerBtnShuffleSVG,PlayerTrackPlay,PlayerTrackContain,PlayerTrackImage,TrackPlayerTrackSVG,PlayerTrackAuthor,PlayerTrackAuthorLink,PlayerTrackAlbum,PlayerTrackAlbumLink,PlayerTrackLikeDis,PlayerTrackLike,TrackPlayerTrackLikeSVG,PlayerTrackDisLike,TrackPlayerTrackDisLikeSVG,BarVolumeBlock,BarVolumeContent,BarVolumeImage,BarVolumeSVG,BarVolumeProgress,BarVolumeProgressLine } from "./Player.jsx";
 import mainSong from '../../Public/Bobby_Marleni_Dropin.mp3';
 
 
@@ -7,10 +7,34 @@ import mainSong from '../../Public/Bobby_Marleni_Dropin.mp3';
 
 
 function Playerbar() {
-  const audioRef  = useRef(null);
-  const handleAudioPlay = () =>{
-    audioRef.currentTime();
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef  = useRef(null)
+  const intervalRef = useRef()
+
+  useEffect(() => {
+    if (isPlaying){
+      audioRef.current.play()
+    }else{
+      audioRef.current.pause()
+    }
+    
+  },[isPlaying])
+
+  const handleStart = () => {
+    audioRef.current.play()
+    setIsPlaying(true)
   }
+
+  const handleStop = () => {
+    audioRef.current.pause()
+    setIsPlaying(false)
+  }
+
+  const togglePlay = isPlaying ? handleStop : handleStart
+
+
+  
+
 
   return (
     
@@ -25,10 +49,10 @@ function Playerbar() {
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                 </BarPlayerBtnSVG>
               </BarPlayerBtnPrev>
-              <BarPlayerPlay >
-              <audio  controls textTracks ref={audioRef} >
+              <BarPlayerPlay onClick={togglePlay} $IsPlaying={isPlaying}>
+              <BarPlayerAudio  controls textTracks ref={audioRef} >
               <source  src={mainSong} type="audio/mpeg"/>
-              </audio>
+              </BarPlayerAudio>
                 <BarPlayerPlaySVG >
                 <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                 </BarPlayerPlaySVG>
