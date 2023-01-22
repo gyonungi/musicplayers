@@ -8,6 +8,8 @@ import mainSong from '../../Public/Bobby_Marleni_Dropin.mp3';
 
 function Playerbar() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [trackProgress, setTrackProgress] = useState(0);
+
   const audioRef  = useRef(null)
   const intervalRef = useRef()
 
@@ -19,7 +21,12 @@ function Playerbar() {
     }
     
   },[isPlaying])
+ 
+ 
 
+  const onPlaying = () => {
+    setTrackProgress(audioRef.current.currentTime);
+  };
   const handleStart = () => {
     audioRef.current.play()
     setIsPlaying(true)
@@ -31,8 +38,8 @@ function Playerbar() {
   }
 
   const togglePlay = isPlaying ? handleStop : handleStart
-
-
+  
+ 
   
 
 
@@ -40,7 +47,14 @@ function Playerbar() {
     
     <BarDiv>
       <BarContent>
-        <BarPlayerProgress></BarPlayerProgress>
+        <BarPlayerProgress
+                type="range"
+                value={trackProgress}
+                  onChange={(e) => {
+                  const seekto = audioRef.current.duration * (e.target.value / 100);
+                  audioRef.current.currentTime = seekto;
+                  
+                }} /> {trackProgress}
         <BarPlayerBlock>
           <BarPlayer>
             <BarPlayerControls>
@@ -50,7 +64,7 @@ function Playerbar() {
                 </BarPlayerBtnSVG>
               </BarPlayerBtnPrev>
               <BarPlayerPlay onClick={togglePlay} $IsPlaying={isPlaying}>
-              <BarPlayerAudio  controls textTracks ref={audioRef} >
+              <BarPlayerAudio  controls  ref={audioRef} onTimeUpdate={onPlaying} >
               <source  src={mainSong} type="audio/mpeg"/>
               </BarPlayerAudio>
                 <BarPlayerPlaySVG >
@@ -116,7 +130,7 @@ function Playerbar() {
                 </BarVolumeSVG>
               </BarVolumeImage>
               <BarVolumeProgress>
-                <BarVolumeProgressLine
+                <BarVolumeProgressLine   
                   type="range"
                   name="range"
                 ></BarVolumeProgressLine>
