@@ -49,12 +49,8 @@ function Playerbar() {
       <BarContent>
         <BarPlayerProgress
                 type="range"
-                value={trackProgress}
-                  onChange={(e) => {
-                  const seekto = audioRef.current.duration * (e.target.value / 100);
-                  audioRef.current.currentTime = seekto;
-                  
-                }} /> {trackProgress}
+                value={trackProgress}              
+                 /> {trackProgress}
         <BarPlayerBlock>
           <BarPlayer>
             <BarPlayerControls>

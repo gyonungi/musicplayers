@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BurgerImage from "../../images/icon/hamburger_icon_153362.svg"
+import BurgerImageTheme from "../../images/topic.png"
 
 export const  StyledBurgerLinkList = styled.div`
     display: flex;
@@ -30,4 +31,14 @@ export const  StyledBurgerLinkList = styled.div`
     height: 10px;
     margin-left: 40px;
     color: #FFFFFF;
+    `;
+
+    export const StyledBurgerTheme = styled.button`
+    border: none;
+    background-color: transparent;
+    background-image: url(${BurgerImageTheme});
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
     `;

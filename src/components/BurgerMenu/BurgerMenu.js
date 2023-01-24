@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-
-
-import {StyledBurgerLinkList,StyledBurgerLink,StyledBurgerButton} from "./BurgerMenu.jsx"
+import React, { useContext, useState } from "react";
+import useThemeContext from "../contexts/theme.jsx";
+import toggleTheme from "../../App"
+import {StyledBurgerLinkList,StyledBurgerLink,StyledBurgerButton,StyledBurgerTheme} from "./BurgerMenu.jsx"
 
 
 function BurgerMenu() {
+    
     const [menuVisible, setmenuVisible] = useState(false);
 
     //обработчик по клику
     const handleClick = () => {
         setmenuVisible(!menuVisible)
+    }
+
+    const ThemeSwitcher = () =>{
+        toggleTheme = useThemeContext();
     }
     return (
         <div className={`burger-menu`}>
@@ -21,6 +26,7 @@ function BurgerMenu() {
                  <StyledBurgerLink exact to = "/">Главное </StyledBurgerLink>
                 <StyledBurgerLink exact to = "/user-playlist">Фильмы </StyledBurgerLink>
                 <StyledBurgerLink exact to = "/signing">Войти </StyledBurgerLink>
+                <StyledBurgerTheme onClick={toggleTheme} ></StyledBurgerTheme>
                 </StyledBurgerLinkList>
           
 }
