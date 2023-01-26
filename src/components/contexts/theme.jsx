@@ -3,12 +3,12 @@ import { useContext } from "react";
 
 export const themes =  {
     dark: {
-        background:{backgroundColor:"black"},
-        text:{backgroundColor:"white"},
+        color:"#FFFFFF",
+        background:"#000000",
     },
     light:{    
-        background:{backgroundColor:"white"},
-        text:{backgroundColor:"black"},
+        color:"#000000",
+        background:"#FFFFFF",   
     },
 }
  export const ThemeContext = React.createContext({

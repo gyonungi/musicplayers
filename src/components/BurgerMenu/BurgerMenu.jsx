@@ -41,4 +41,5 @@ export const  StyledBurgerLinkList = styled.div`
     background-repeat: no-repeat;
     width: 17px;
     height: 17px;
+    cursor:pointer;
     `;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Skeleton from "../Skeleton/Skeleton"
 import { FilterTracks } from "./FilterTracks";
 import { CenterBlockDiv,CenterTitle,CenterFilter,CenterFilterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.jsx";
-
+import { useThemeContext } from "../contexts/theme";
 import Track from "../Track/Track";
 import "./CenterBlock.css";
 
@@ -140,6 +140,9 @@ const defaultTracks = [
 ];
 
 function CenterBlock() {
+
+  const {theme} = useThemeContext();
+
   // состояние для эмуляции режима загрузки данных
   const [loading, setLoading] = useState(true);
   // состояние со списком треков
