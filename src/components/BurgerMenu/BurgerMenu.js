@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from 'styled-components'
 import BurgerImageTheme from "../../images/topic.png"
 import {StyledBurgerLinkList,StyledBurgerLink,StyledBurgerButton} from "./BurgerMenu.jsx"
-import { useThemeContext } from "../contexts/theme";
+import { useThemeContext } from "../ThemeStore/Themestore";
 
 function BurgerMenu() {
 
@@ -17,7 +17,6 @@ function BurgerMenu() {
     cursor:pointer;
     `;
 
-
     const [menuVisible, setmenuVisible] = useState(false);
 
     //обработчик по клику
@@ -25,7 +24,8 @@ function BurgerMenu() {
         setmenuVisible(!menuVisible)
     }
    
-  
+    const { toggleTheme, theme } = useThemeContext()
+
     return (
         <div className={`burger-menu`}>
            <StyledBurgerButton onClick={handleClick}> </StyledBurgerButton>
@@ -36,7 +36,8 @@ function BurgerMenu() {
                  <StyledBurgerLink exact to = "/">Главное </StyledBurgerLink>
                 <StyledBurgerLink exact to = "/user-playlist">Фильмы </StyledBurgerLink>
                 <StyledBurgerLink exact to = "/signing">Войти </StyledBurgerLink>
-                <StyledBurgerTheme ></StyledBurgerTheme>
+                <StyledBurgerTheme $IsTheme={theme}
+                   onClick={toggleTheme}></StyledBurgerTheme>
                 </StyledBurgerLinkList>
           
 }
