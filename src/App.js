@@ -1,5 +1,5 @@
 import React, { useState,useContext  } from "react";
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import './App.css';
 import Header from './components/Header/Header';
 import CenterBlock from "./components/CenterBlock/CenterBlock";
@@ -8,6 +8,7 @@ import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
 import Playerbar from "./components/Player/Player"
 import './components/Player/Player.css'
 import { StyledDivApp } from "./App.jsx";
+import { themes,ThemeContexts } from "./components/ThemeStore/Themestore";
 
 
 
@@ -24,12 +25,20 @@ function App(props) {
   background-color: ${props => props.theme.dark};
   `;
   const theme = {
-    dark: 'rgba(0, 0, 0, 0.85)',
+    dark: themes.dark,
   };
 
+  const {currentTheme,setCurrentTheme} = useState(themes.light);
+  const toggleTheme = () => {
+      if(currentTheme === themes.dark){
+          setCurrentTheme(themes.light);
+          return;
+      }
+      setCurrentTheme(themes.dark);
+  }
 
   return (
-  
+    <ThemeContexts.Provider value={{theme: currentTheme, toggleTheme }}>
     <StyledDivApp theme={theme}>  
       <Header/>
       <section className="main">          
@@ -39,6 +48,7 @@ function App(props) {
       </section>
       <Playerbar/>
     </StyledDivApp>
+    </ThemeContexts.Provider>
   );
 }
 export default App;
