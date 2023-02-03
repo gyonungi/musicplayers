@@ -4,6 +4,7 @@ import { FilterTracks } from "./FilterTracks";
 import { CenterBlockDiv,CenterTitle,CenterFilter,CenterFilterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.jsx";
 import Track from "../Track/Track";
 import "./CenterBlock.css";
+import { useThemeContext } from "../ThemeStore/Themestore";
 
 // массив фильтров по артистам
 const artists = [
@@ -139,7 +140,7 @@ const defaultTracks = [
 ];
 
 function CenterBlock() {
-
+  const { theme } = useThemeContext()
 
   // состояние для эмуляции режима загрузки данных
   const [loading, setLoading] = useState(true);
@@ -203,9 +204,9 @@ function CenterBlock() {
       <CenterTitle className="centeBlock__title">Треки</CenterTitle>
       <CenterFilter>
         <CenterFilterTitle >Искать по:</CenterFilterTitle>
-        <FilterTracks label="исполнителю" options={artists} filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
-        <FilterTracks label="году выпуска" options={years} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
-        <FilterTracks label="жанру" options={genres} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
+        <FilterTracks $IsTheme={theme} label="исполнителю" options={artists} filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
+        <FilterTracks $IsTheme={theme} label="году выпуска" options={years} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
+        <FilterTracks $IsTheme={theme} label="жанру" options={genres} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
       </CenterFilter>
       <CenterblockContent>
         <CenterPlaylistTitle >
@@ -215,7 +216,7 @@ function CenterBlock() {
           <CenterPlaylistCol4 className="centerblock__playlist-col col4">◴</CenterPlaylistCol4>
         </CenterPlaylistTitle>
 
-        <CenterPlaylist>
+        <CenterPlaylist $IsTheme={theme}>
           {
             loading ?
               // если "загрузка" еще идет, то показываем Скелетон
