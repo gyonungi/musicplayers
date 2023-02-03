@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
 import { ThemeContext, themes } from '../components/ThemeStore/Themestore'
-
+import App from '../App'; 
 const GlobalStyle = createGlobalStyle`
 * {
   margin: 0;
@@ -20,7 +20,8 @@ body {
     sans-serif;
  
 }
-`
+`;
+
 const StyledApp = styled.div`
 width: 100%;
 min-height: 100%;
@@ -31,9 +32,9 @@ margin: 0 auto;
 position: relative;
 background: ${(props) => props.$IsTheme.background};
 color: ${(props) => props.$IsTheme.color};
-`
+`;
 
-function App() {
+function Apps() {
 
 
   const [currentTheme, setCurrentTheme] = useState(themes.dark)
@@ -50,9 +51,10 @@ function App() {
     <ThemeContext.Provider value={{ theme: currentTheme, toggleTheme }}>
       <StyledApp $IsTheme={currentTheme}>
         <GlobalStyle/>
+        <App/>
       </StyledApp>
     </ThemeContext.Provider>
   )
 }
 
-export default App
+export default Apps
