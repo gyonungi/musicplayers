@@ -11,7 +11,7 @@ function BurgerMenu() {
     }
    
     const { toggleTheme, theme } = useThemeContext()
-
+    
     return (
         <BurgerMenuDiv>
            <StyledBurgerButton 
@@ -22,8 +22,8 @@ function BurgerMenu() {
         {
         menuVisible &&(
             <Fragment>
-               <StyledBurgerLinkList>
-                 <StyledBurgerLink exact to = "/">Главное </StyledBurgerLink>
+               <StyledBurgerLinkList $IsTheme={theme}>
+                 <StyledBurgerLink exact to = "/" >Главное  </StyledBurgerLink>
                 <StyledBurgerLink exact to = "/user-playlist">Фильмы </StyledBurgerLink>
                 <StyledBurgerLink exact to = "/signing">Войти </StyledBurgerLink>
                 <StyledBurgerTheme 

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BarPlayerAudio,BarDiv,BarContent,BarPlayerProgress,BarPlayerBlock,BarPlayer,BarPlayerControls,BarPlayerBtnPrev,BarPlayerBtnSVG,BarPlayerPlay,BarPlayerPlaySVG,BarPlayerBtnNext,BarPlayerBtnNextSVG,BarPlayerBtnRepeat,BarPlayerBtnRepeatSVG,BarPlayerBtnShuffle,BarPlayerBtnShuffleSVG,PlayerTrackPlay,PlayerTrackContain,PlayerTrackImage,TrackPlayerTrackSVG,PlayerTrackAuthor,PlayerTrackAuthorLink,PlayerTrackAlbum,PlayerTrackAlbumLink,PlayerTrackLikeDis,PlayerTrackLike,TrackPlayerTrackLikeSVG,PlayerTrackDisLike,TrackPlayerTrackDisLikeSVG,BarVolumeBlock,BarVolumeContent,BarVolumeImage,BarVolumeSVG,BarVolumeProgress,BarVolumeProgressLine } from "./Player.jsx";
 import mainSong from '../../Public/Bobby_Marleni_Dropin.mp3';
-
+import { useThemeContext } from "../ThemeStore/Themestore";
 
 
 
@@ -39,15 +39,15 @@ function Playerbar() {
 
   const togglePlay = isPlaying ? handleStop : handleStart
   
- 
+  const { theme } = useThemeContext()
   
 
 
   return (
     
-    <BarDiv>
-      <BarContent>
-        <BarPlayerProgress
+    <BarDiv $IsTheme={theme}>
+      <BarContent >
+        <BarPlayerProgress 
                 type="range"
                 value={trackProgress}              
                  /> {trackProgress}
@@ -59,26 +59,26 @@ function Playerbar() {
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
                 </BarPlayerBtnSVG>
               </BarPlayerBtnPrev>
-              <BarPlayerPlay onClick={togglePlay} $IsPlaying={isPlaying}>
-              <BarPlayerAudio  controls  ref={audioRef} onTimeUpdate={onPlaying} >
+              <BarPlayerPlay $IsTheme={theme}  onClick={togglePlay} $IsPlaying={isPlaying}>
+              <BarPlayerAudio $IsTheme={theme} controls  ref={audioRef} onTimeUpdate={onPlaying} >
               <source  src={mainSong} type="audio/mpeg"/>
               </BarPlayerAudio>
-                <BarPlayerPlaySVG >
+                <BarPlayerPlaySVG $IsTheme={theme}>
                 <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                 </BarPlayerPlaySVG>
               </BarPlayerPlay>
-              <BarPlayerBtnNext>
+              <BarPlayerBtnNext $IsTheme={theme}>
                 <BarPlayerBtnNextSVG>
                   <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                 </BarPlayerBtnNextSVG>
               </BarPlayerBtnNext>
-              <BarPlayerBtnRepeat>
+              <BarPlayerBtnRepeat $IsTheme={theme}>
                 <BarPlayerBtnRepeatSVG>
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                 </BarPlayerBtnRepeatSVG>
               </BarPlayerBtnRepeat>
-              <BarPlayerBtnShuffle>
-                <BarPlayerBtnShuffleSVG>
+              <BarPlayerBtnShuffle $IsTheme={theme}>
+                <BarPlayerBtnShuffleSVG >
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </BarPlayerBtnShuffleSVG>
               </BarPlayerBtnShuffle>
@@ -104,12 +104,12 @@ function Playerbar() {
               </PlayerTrackContain>
 
               <PlayerTrackLikeDis>
-                <PlayerTrackLike>
+                <PlayerTrackLike $IsTheme={theme}>
                   <TrackPlayerTrackLikeSVG alt="like">
                     <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                   </TrackPlayerTrackLikeSVG>
                 </PlayerTrackLike>
-                <PlayerTrackDisLike>
+                <PlayerTrackDisLike $IsTheme={theme}>
                   <TrackPlayerTrackDisLikeSVG alt="dislike">
                     <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
                   </TrackPlayerTrackDisLikeSVG>
@@ -120,7 +120,7 @@ function Playerbar() {
 
           <BarVolumeBlock>
             <BarVolumeContent>
-              <BarVolumeImage>
+              <BarVolumeImage $IsTheme={theme}>
                 <BarVolumeSVG alt="volume">
                   <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
                 </BarVolumeSVG>

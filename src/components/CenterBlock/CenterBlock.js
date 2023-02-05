@@ -201,16 +201,16 @@ function CenterBlock() {
 
   return (
    <CenterBlockDiv>
-      <CenterTitle className="centeBlock__title">Треки</CenterTitle>
+      <CenterTitle className="centeBlock__title" >Треки</CenterTitle>
       <CenterFilter>
         <CenterFilterTitle >Искать по:</CenterFilterTitle>
-        <FilterTracks $IsTheme={theme} label="исполнителю" options={artists} filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
-        <FilterTracks $IsTheme={theme} label="году выпуска" options={years} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
-        <FilterTracks $IsTheme={theme} label="жанру" options={genres} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
+        <FilterTracks  label="исполнителю" options={artists} filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} $IsTheme={theme}/>
+        <FilterTracks  label="году выпуска" options={years} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} $IsTheme={theme}/>
+        <FilterTracks  label="жанру" options={genres} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} $IsTheme={theme}/>
       </CenterFilter>
       <CenterblockContent>
         <CenterPlaylistTitle >
-          <CenterPlaylistCol1 className="centerblock__playlist-col col1">Трек</CenterPlaylistCol1>
+          <CenterPlaylistCol1  className="centerblock__playlist-col col1">Трек</CenterPlaylistCol1>
           <CenterPlaylistCol2 className="centerblock__playlist-col col2">ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
           <CenterPlaylistCol3 className="centerblock__playlist-col col3">АЛЬБОМ</CenterPlaylistCol3>
           <CenterPlaylistCol4 className="centerblock__playlist-col col4">◴</CenterPlaylistCol4>
@@ -231,7 +231,8 @@ function CenterBlock() {
                 //     trackItem.genres.includes(genreFilter)
                 // })
                 .map((trackItem, trackIndex) => (
-                  <Track
+                  <Track 
+                  $IsTheme={theme}
                     key={trackIndex}
                     name={trackItem.name}
                     label={trackItem.label}
