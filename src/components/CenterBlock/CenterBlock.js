@@ -201,7 +201,7 @@ function CenterBlock() {
 
   return (
    <CenterBlockDiv>
-      <CenterTitle className="centeBlock__title" >Треки</CenterTitle>
+      <CenterTitle  >Треки</CenterTitle>
       <CenterFilter>
         <CenterFilterTitle >Искать по:</CenterFilterTitle>
         <FilterTracks  label="исполнителю" options={artists} filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} $IsTheme={theme}/>
@@ -210,10 +210,10 @@ function CenterBlock() {
       </CenterFilter>
       <CenterblockContent>
         <CenterPlaylistTitle >
-          <CenterPlaylistCol1  className="centerblock__playlist-col col1">Трек</CenterPlaylistCol1>
-          <CenterPlaylistCol2 className="centerblock__playlist-col col2">ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
-          <CenterPlaylistCol3 className="centerblock__playlist-col col3">АЛЬБОМ</CenterPlaylistCol3>
-          <CenterPlaylistCol4 className="centerblock__playlist-col col4">◴</CenterPlaylistCol4>
+          <CenterPlaylistCol1  >Трек</CenterPlaylistCol1>
+          <CenterPlaylistCol2 >ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
+          <CenterPlaylistCol3 >АЛЬБОМ</CenterPlaylistCol3>
+          <CenterPlaylistCol4 >◴</CenterPlaylistCol4>
         </CenterPlaylistTitle>
 
         <CenterPlaylist $IsTheme={theme}>

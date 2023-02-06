@@ -6,13 +6,15 @@ import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
 import Playerbar from "./components/Player/Player"
 import './components/Player/Player.css'
 import { StyledDivApp } from "./App.jsx";
-
-
+import {TodoList } from './components/todo-list';
+import { AddTodo } from "./components/add-todo";
 function App() {
 
 
   return (
     <StyledDivApp>
+       <AddTodo />
+        <TodoList />
       <Header/>
       <section className="main">          
         <BurgerMenu/>
@@ -21,6 +23,7 @@ function App() {
       </section>
       <Playerbar/>
     </StyledDivApp>
+
   );
 }
 export default App;

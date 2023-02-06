@@ -1,33 +1,3 @@
-.centerBlock {
-    padding-left: 111px;
-    margin-right: auto;
-}
-
-.centeBlock__title {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    color: white;
-    line-height: 72px;
-    letter-spacing: -0.8px;
-    margin-bottom: 45px;
-}
-
-.centerBlock__filter {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-bottom: 51px;
-}
-
-.centerBlock__filter_title {
-    color: white;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-right: 15px;
-}
 
 .dropdown {
     position: relative;
@@ -65,19 +35,7 @@
     /* padding вокруг плашки */
 }
 
-.filter-list-item {
-    color: #313131;
-    text-decoration: none;
-    display: block;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    font-feature-settings: "pnum" on, "lnum" on;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-around;
-}
+
 
 .filter-list-item.active {
     color: red
@@ -134,23 +92,6 @@
     color: #696969;
     text-transform: uppercase;
     margin-bottom: 24px;
-}
-
-.col1 {
-    width: 447px;
-}
-
-.col2 {
-    width: 321px;
-}
-
-.col3 {
-    width: 245px;
-}
-
-.col4 {
-    padding-left: 30px;
-    width: 60px;
 }
 
 .centerblock__content {
