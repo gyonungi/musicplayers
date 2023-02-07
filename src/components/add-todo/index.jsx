@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {addTodo} from '../../Store/actions/creators/todo';
 import { deleteTodo } from "../../Store/actions/creators/todo";
+
+
 export const AddTodo = () => {
   const [value, setValue] = useState("");
   
@@ -27,13 +29,14 @@ export const AddTodo = () => {
   
   return (
     <div>
-      <input type="text" value={value} onChange={onInputChange} />
+      <input type="text"  value={value} onChange={onInputChange} />
       <button className="add-todo" onClick={handleAddTodo}>
         Add todo
       </button>
       <button className="remove-todo" onClick={handledeleteTodo} >
        Remove todo
       </button>
+      
     </div>
   );
 };
