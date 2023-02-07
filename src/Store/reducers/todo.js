@@ -54,7 +54,7 @@ export default function todoReducer(state = initialState, action) {
       
       return {
         ...state, 
-        todos: initialState.filter((todoObj) => todoObj.id !== action.payload),
+        allIds: state.allIds.filter(todo => todo.id !== action.id),
       };
 
     default:
