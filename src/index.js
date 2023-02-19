@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Contex from "./contex/Contex.jsx"
+
+import { AppRoutes } from './Routes.jsx';
 
 /* 
 const burgeritem = document.querySelector(".menu__list");
@@ -30,7 +31,7 @@ function burgerHandler () {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Contex/>
+    <AppRoutes/>
   </React.StrictMode>
 );
 
