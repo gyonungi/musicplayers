@@ -4,7 +4,7 @@ import Registration from './Pages/RegistrationPage/Registration';
 import Contex from './contex/Contex'
 import Error404 from './Pages/ErrorPage/Error404';
 import LogIn from './Pages/LoginPage/LogIn';
-import ProtectedRoute from './protected-route/protectedRoute';
+import ProtectedRoute from './components/protected-route/protectedRoute';
 
 
 export const AppRoutes = (props) => {
