@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {userApi} from '../backend/user'
-import { tracksApi } from '../backend/tracks';
-import { selectionsApi } from '../backend/selections';
+import { tracksApi } from '../backend/track';
+import { selectionsApi } from '../backend/selection';
 import { favoritesApi } from '../backend/favorites';
-import authReducer from './slices/auth';
-import trackReducer from './slices/tracks';
+import authReducer from './reducers/auth';
+import trackReducer from './reducers/tracks';
 
 export const store = configureStore({
   reducer: {

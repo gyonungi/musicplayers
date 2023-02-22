@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import Logo from "../../components/Logo/Logo";
+import Logo from '../../components/Logo/Logo';
 import { Link } from 'react-router-dom';
 import { useSignupMutation } from '../../backend/user';
 import { RegDiv,RegBox,RegForm , Reginput,LogButton  } from './Registration.styled';
@@ -19,8 +19,6 @@ const Registration = (props) => {
     setUsername(loginButton.current.value);
   };
 
-
-
   const inputPassword = () => {
     setPassword(passwordButton.current.value);
   };
@@ -33,8 +31,7 @@ const Registration = (props) => {
     if (canSave) {
       try {
         await userSignUp({ username, password }).unwrap();
-      } catch (err) {
-        console.log(err.data.username[0]);
+      } catch (err) { 
         console.log(err.data.password[0]);
       }
     }
@@ -71,7 +68,7 @@ const Registration = (props) => {
             id="confirm_password"
             placeholder="confirm password"
           />
-          <Link to="/">
+          <Link to="/" >
             <LogButton onClick={registerUser} >
               Зарегистрироваться
             </LogButton>
