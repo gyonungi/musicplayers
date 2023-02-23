@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {userApi} from '../backend/user'
-import { tracksApi } from '../backend/track';
+import { tracksApi } from '../backend/tracks';
 import { selectionsApi } from '../backend/selection';
 import { favoritesApi } from '../backend/favorites';
 import authReducer from './reducers/auth';
