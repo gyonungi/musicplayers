@@ -2,20 +2,24 @@ import React, { useEffect, useState, useRef } from 'react';
 import Logo from "../../components/Logo/Logo";
 import { Link, Navigate } from 'react-router-dom';
 import { useLoginMutation, useTokenMutation } from '../../backend/user';
-import {  useSelector } from 'react-redux';
+import {  useSelector,useDispatch } from 'react-redux';
 import {isLoggedInSelector} from '../../store/selectors/auth'
 import { LogDiv,LogBox,LogForm,Loginput,LogButton,Regbutton } from './LogIn.styled';
+import { tokenReceived } from '../../store/reducers/auth';
 
 const LogIn = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState();
   const loginInput = useRef(null);
   const passwordInput = useRef(null);
-
+  const dispatch = useDispatch();
   const loggedIn = useSelector(isLoggedInSelector);
   const [userSignIn] = useLoginMutation();
   const [userToken, result] = useTokenMutation();
 
+  useEffect(() => {
+    dispatch(tokenReceived(result.data));
+  }, [result.data]);
 
   useEffect(() => {
     if (result.error) {
@@ -29,7 +33,7 @@ const LogIn = () => {
 
 
   const inputLogin = () => {
-    setUsername(loginInput.current.value);
+    setEmail(loginInput.current.value);
   };
 
   const inputPassword = () => {
@@ -38,14 +42,14 @@ const LogIn = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    if (username && password) {
-      userSignIn({ username, password });
-      userToken({ username, password });
+    if (email && password) {
+      userSignIn({ email, password });
+      userToken({ email, password });
     }
-    if (!username || !password) {
-      console.log('поле пароль и/или логин не заполнено ');
+    if (!email || !password) {
+      console.log('пароль или логин не заполнен ');
     }
-    setUsername('');
+    setEmail('');
     setPassword('');
     passwordInput.current.value = '';
     loginInput.current.value = '';
