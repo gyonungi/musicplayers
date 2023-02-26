@@ -3,7 +3,7 @@ import React from 'react'
 
 
 import SearchSvg from '../../images/icon/search.svg';
-import { SearchLogoImg } from './searchologoStyled';
+import { SearchLogoImg } from './searchologo.styled';
 
 function SearchLogo() {
   return (

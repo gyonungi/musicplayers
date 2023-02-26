@@ -1,91 +1,55 @@
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import { CenterBlockDiv,CenterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.styled";
+import Track from "../Track/Track";
+import "./CenterBlock.css";
+import { useThemeContext } from "../ThemeStore/Themestore";
+import { useGetAllTracksQuery } from "../../backend/tracks";
 
-export const CenterBlockDiv = styled.div`
-    padding-left: 111px;
-    margin-right: auto;
-`;
+const CenterBlockContent = ({ tracks, trackId }) => {
+  const { data: allTracks, error, isLoading } = useGetAllTracksQuery();
 
-export const CenterTitle = styled.h2`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    color: white;
-    line-height: 72px;
-    letter-spacing: -0.8px;
-    margin-bottom: 45px;
-`;
+  useEffect(() => {
+    if (allTracks) {
+       tracks(allTracks);
+    }
+  }, [allTracks]);
 
-export const CenterFilter= styled.div`
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-bottom: 51px;
-`;
+  const { theme } = useThemeContext()
 
-export const CenterFilterTitle= styled.h3`
-    color: white;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-right: 15px;
-`;
+  return (
+   <CenterBlockDiv>
+      <CenterTitle  >Треки</CenterTitle>
+      <CenterblockContent>
+        <CenterPlaylistTitle >
+          <CenterPlaylistCol1  >Трек</CenterPlaylistCol1>
+          <CenterPlaylistCol2 >ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
+          <CenterPlaylistCol3 >АЛЬБОМ</CenterPlaylistCol3>
+          <CenterPlaylistCol4 >◴</CenterPlaylistCol4>
+        </CenterPlaylistTitle>
+        {error ? (
+        <>Oh no, there was an error</>
+      ) : isLoading ? (
+        <CenterPlaylist $IsTheme={theme}/>
+      ) : allTracks ? (
+        <CenterPlaylist >
 
-export const CenterblockContent =styled.div`
-    display: flex;
-    flex-direction: column;
-`;
+    {allTracks.map((element, index) => (
+                  <Track 
+                  $IsTheme={theme}
+                  trackId={trackId}
+                  id={element.id}
+                  track={element.name}
+                  artist={element.author}
+                  album={element.album}
+                  time={element.duration_in_seconds}
+                  key={index}
+                  />
+                ))}
+        </CenterPlaylist>
+      ) : null } 
+      </CenterblockContent>
+    </CenterBlockDiv>
+  );
+}
 
-export const CenterPlaylistTitle= styled.div`
-    display: flex;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 2px;
-    color: #696969;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-`;
-
-export const CenterPlaylist= styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-`;
-
-export const CenterPlaylistCol1= styled.div`
-    width: 447px;
-`;
-
-export const CenterPlaylistCol2= styled.div`
-   width: 321px;
-`;
-
-export const CenterPlaylistCol3= styled.div`
-    width: 245px;
-`;
-
-export const CenterPlaylistCol4= styled.div`
-    padding-left: 30px;
-    width: 60px;
-`;
-
-export const DropDownDiv= styled.div`
-     position: relative;
-    display: inline-block;
-`;
-
-export const FilterListItem= styled.li`
-     color: #313131;
-    text-decoration: none;
-    display: block;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    font-feature-settings: "pnum" on, "lnum" on;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-around;
-`;
+export default CenterBlockContent;

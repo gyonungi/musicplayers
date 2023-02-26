@@ -1,10 +1,18 @@
-import styled from "styled-components";
+import Logo from "../Logo/Logo";
+import SearchInput from "../SearchInput/SearchInput"
+import React from 'react'
 
-export const  StyledHeader = styled.div`
-padding: 20px 90px 20px 36px;
-display: flex;
-align-items: center;
-    `;
+import SearchLogo from "../searchlogo/searchlogo";
+import { StyledHeader } from "./Header.styled";
 
+const Header = ()  => {  
+  return (
+    <StyledHeader>
+      <Logo />
+      <SearchLogo/>
+      <SearchInput />
+      </StyledHeader>
+  );
+};
 
- 
+export default Header;
