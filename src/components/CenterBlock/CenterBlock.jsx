@@ -1,31 +1,73 @@
 import React, { useState, useEffect } from "react";
-import { CenterBlockDiv,CenterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.styled";
+import { CenterBlockDiv,CenterTitle,CenterFilter,CenterFilterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.styled";
 import Track from "../Track/Track";
+import { FilterTracks } from "./FilterTracks";
 import "./CenterBlock.css";
 import { useThemeContext } from "../ThemeStore/Themestore";
 import { useGetAllTracksQuery } from "../../backend/tracks";
 
-const CenterBlockContent = ({ tracks, trackId }) => {
+const CenterBlockContent = () => {
   const { data: allTracks, error, isLoading } = useGetAllTracksQuery();
 
-  useEffect(() => {
-    if (allTracks) {
-       tracks(allTracks);
-    }
-  }, [allTracks]);
-
   const { theme } = useThemeContext()
+  
+  const [artistFilter, setArtistFilter] = useState([]);
+  const [yearFilter, setYearFilter] = useState([]);
+  const [genreFilter, setGenreFilter] = useState([]);
+
+const handleArtistFilterSelect = (artist) => {
+
+    // если выбрали отключаем  состояние фильтрации
+    setArtistFilter((prevState) => {
+      if (prevState.includes(artist)) {
+        return prevState.filter(item => item !== artist);
+      } else return [...prevState, artist]
+    });
+  };
+
+  const handleGenreFilterSelect = (genre) => {
+    
+    setGenreFilter((prevState) => {
+      if (prevState.includes(genre)) {
+        return prevState.filter(item => item !== genre);
+      } else return [...prevState, genre]
+    });
+  };
+
+  const handleYearFilterSelect = (year) => {
+   
+    setYearFilter((prevState) => {
+      if (prevState.includes(year)) {
+        return prevState.filter(item => item !== year);
+      } else return [...prevState, year]
+    });
+  };
+
+    // фильтрация треков
+    useEffect(() => {
+      const filteredArtist = artistFilter.length ? allTracks.filter(track => artistFilter.includes(track.label)) : allTracks;
+      const filteredYears = yearFilter.length ? filteredArtist.filter(track => yearFilter.includes(track.year)) : filteredArtist;
+      const filteredGenres = genreFilter.length ? filteredYears.filter(track => genreFilter.includes(track.genres)) : filteredYears;
+    }, [artistFilter, genreFilter, yearFilter])
+  
+
 
   return (
    <CenterBlockDiv>
       <CenterTitle  >Треки</CenterTitle>
+      <CenterFilter>
+        <CenterFilterTitle >Искать по:</CenterFilterTitle>
+        <FilterTracks label="исполнителю"  filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
+        <FilterTracks label="году выпуска"  filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
+        <FilterTracks label="жанру"  filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
+      </CenterFilter>
       <CenterblockContent>
         <CenterPlaylistTitle >
           <CenterPlaylistCol1  >Трек</CenterPlaylistCol1>
           <CenterPlaylistCol2 >ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
           <CenterPlaylistCol3 >АЛЬБОМ</CenterPlaylistCol3>
           <CenterPlaylistCol4 >◴</CenterPlaylistCol4>
-        </CenterPlaylistTitle>
+        </CenterPlaylistTitle>  
         {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
@@ -36,7 +78,6 @@ const CenterBlockContent = ({ tracks, trackId }) => {
     {allTracks.map((element, index) => (
                   <Track 
                   $IsTheme={theme}
-                  trackId={trackId}
                   id={element.id}
                   track={element.name}
                   artist={element.author}

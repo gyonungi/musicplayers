@@ -1,39 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import "./CenterBlock.css";
-import Track from "../Track/Track";
-import { CenterBlockDiv,CenterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.jsx";
+import React, { useState } from 'react';
 
+export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
+  const [visible, setVisible] = useState(false);
 
-const FilteredTracksContent = ({ tracks, trackId }) => {
+  const handleFilterItemClick = (name) => {
+    onFilterItemClick(name);
+    setVisible(false);
+  }
 
+  const handleFilterClick = () => {
+    setVisible(!visible);
+  }
 
-    return (
-   <CenterBlockDiv>
-      <CenterTitle  >Треки</CenterTitle>
-      <CenterblockContent>
-        <CenterPlaylistTitle >
-          <CenterPlaylistCol1  >Трек</CenterPlaylistCol1>
-          <CenterPlaylistCol2 >ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
-          <CenterPlaylistCol3 >АЛЬБОМ</CenterPlaylistCol3>
-          <CenterPlaylistCol4 >◴</CenterPlaylistCol4>
-        </CenterPlaylistTitle>
-        {tracks ? (
-        <CenterPlaylist >
-          {tracks.map((element, index) => (
-                  <Track 
-                  trackId={trackId}
-                  id={element.id}
-                  track={element.name}
-                  artist={element.author}
-                  album={element.album}
-                  time={element.duration_in_seconds}
-                  key={index}
-                  />
-                ))}
-        </CenterPlaylist>
-      ) : null } 
-      </CenterblockContent>
-    </CenterBlockDiv>
-  );
+  return (
+    <div className="dropdown">
+      <button
+        // если какой-то фильтр в этой категории выбран, то подсвечиваем кнопку активной
+        className={`centerBlock__filter_btn ${filter.length ? 'active' : ''}`}
+        onClick={handleFilterClick}
+      >
+        {label} {!!filter.length && <span>{filter.length}</span>}
+      </button>
+      {
+        // если состояние видимости меню включено, то отрисовываем фильтр
+        visible && (
+          <ul className="list">
+            {options.map((item) => (
+              <li
+                // выбранный элемент из списка подсвечиваем активным
+                className={`filter-list-item ${filter.includes(item.name) ? 'active' : ''}`}
+                key={item.id}
+                onClick={() => handleFilterItemClick(item.name)}
+              >
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  )
 }
-export default FilteredTracksContent;
