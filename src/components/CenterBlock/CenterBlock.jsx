@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CenterBlockDiv,CenterTitle,CenterFilter,CenterFilterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.styled";
 import Track from "../Track/Track";
 import { FilterTracks } from "./FilterTracks";
@@ -42,14 +42,38 @@ const handleArtistFilterSelect = (artist) => {
       } else return [...prevState, year]
     });
   };
-
+      
     // фильтрация треков
-    useEffect(() => {
-      const filteredArtist = artistFilter.length ? allTracks.filter(track => artistFilter.includes(track.label)) : allTracks;
-      const filteredYears = yearFilter.length ? filteredArtist.filter(track => yearFilter.includes(track.year)) : filteredArtist;
-      const filteredGenres = genreFilter.length ? filteredYears.filter(track => genreFilter.includes(track.genres)) : filteredYears;
-    }, [artistFilter, genreFilter, yearFilter])
-  
+    const filteredTracks = allTracks.filter((track) => {
+      let isFilterAllowed = true
+      if(artistFilter.length) {
+      }
+      if(filteredYears.length && isFilterAllowed)
+      if(filteredGenres.length && isFilterAllowed)
+      return isFilterAllowed
+      return false; 
+   })
+              //год
+   const filteredYears = allTracks.filter((track) => {
+    let isFilterAllowed = true
+    if(yearFilter.length) {
+    }
+    if(filteredTracks.length && isFilterAllowed)
+    if(filteredGenres.length && isFilterAllowed)
+    return isFilterAllowed 
+    return false;
+ })
+          //жанр
+ const filteredGenres = allTracks.filter((track) => {
+  let isFilterAllowed = true
+  if(genreFilter.length) {
+  }
+  if(filteredTracks.length && isFilterAllowed)
+  if(filteredYears.length && isFilterAllowed)
+  return isFilterAllowed 
+  return false;
+})
+
 
 
   return (
@@ -75,7 +99,8 @@ const handleArtistFilterSelect = (artist) => {
       ) : allTracks ? (
         <CenterPlaylist >
 
-    {allTracks.map((element, index) => (
+    {filteredTracks.map((element, index) => (
+      
                   <Track 
                   $IsTheme={theme}
                   id={element.id}
