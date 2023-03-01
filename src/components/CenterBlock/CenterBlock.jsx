@@ -7,7 +7,7 @@ import { useThemeContext } from "../ThemeStore/Themestore";
 import { useGetAllTracksQuery } from "../../backend/tracks";
 
 const CenterBlockContent = () => {
-  const { data: allTracks, error, isLoading } = useGetAllTracksQuery();
+  const { data: allTracks = [], error, isLoading } = useGetAllTracksQuery();
 
   const { theme } = useThemeContext()
   
@@ -47,32 +47,18 @@ const handleArtistFilterSelect = (artist) => {
     const filteredTracks = allTracks.filter((track) => {
       let isFilterAllowed = true
       if(artistFilter.length) {
+      allTracks.includes(track.author)        
       }
-      if(filteredYears.length && isFilterAllowed)
-      if(filteredGenres.length && isFilterAllowed)
+      if(filteredYears.length && isFilterAllowed){
+        allTracks.includes(track.year)
+      }
+      if(filteredGenres.length && isFilterAllowed){
+        allTracks.includes(track.year)
+      }
       return isFilterAllowed
-      return false; 
+      
    })
-              //год
-   const filteredYears = allTracks.filter((track) => {
-    let isFilterAllowed = true
-    if(yearFilter.length) {
-    }
-    if(filteredTracks.length && isFilterAllowed)
-    if(filteredGenres.length && isFilterAllowed)
-    return isFilterAllowed 
-    return false;
- })
-          //жанр
- const filteredGenres = allTracks.filter((track) => {
-  let isFilterAllowed = true
-  if(genreFilter.length) {
-  }
-  if(filteredTracks.length && isFilterAllowed)
-  if(filteredYears.length && isFilterAllowed)
-  return isFilterAllowed 
-  return false;
-})
+ 
 
 
 
