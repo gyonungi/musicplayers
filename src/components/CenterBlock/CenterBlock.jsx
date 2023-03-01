@@ -47,13 +47,13 @@ const handleArtistFilterSelect = (artist) => {
     const filteredTracks = allTracks.filter((track) => {
       let isFilterAllowed = true
       if(artistFilter.length) {
-      allTracks.includes(track.author)        
+      isFilterAllowed = artistFilter.includes(track.author)
       }
-      if(filteredYears.length && isFilterAllowed){
-        allTracks.includes(track.year)
+      if(yearFilter.length && isFilterAllowed){
+       isFilterAllowed = genreFilter.includes(track.year)
       }
-      if(filteredGenres.length && isFilterAllowed){
-        allTracks.includes(track.year)
+      if(genreFilter.length && isFilterAllowed){
+         isFilterAllowed = genreFilter.includes(track.genre)
       }
       return isFilterAllowed
       
