@@ -5,6 +5,7 @@ import { FilterTracks } from "./FilterTracks";
 import "./CenterBlock.css";
 import { useThemeContext } from "../ThemeStore/Themestore";
 import { useGetAllTracksQuery } from "../../backend/tracks";
+import { all } from "axios";
 
 const CenterBlockContent = () => {
   const { data: allTracks = [], error, isLoading } = useGetAllTracksQuery();
@@ -59,17 +60,33 @@ const handleArtistFilterSelect = (artist) => {
       
    })
  
-
-
+    const newauthor = [];
+    for (let f = 0; f < allTracks.length; f++) {
+      const elem = allTracks[f];
+      newauthor.push(elem.author)
+    }
+    console.log(newauthor);
+      const newyear = [];
+      for (let j = 0; j < allTracks.length; j++) {
+        const elem = allTracks[j];
+        newyear.push(elem.release_date);
+      }
+      console.log(newyear);
+    const newgenre = [];
+    for (let i = 0; i < allTracks.length; i++) {
+      const elem = allTracks[i];
+      newgenre.push(elem.genre);
+    }
+    console.log(newgenre);
 
   return (
    <CenterBlockDiv>
       <CenterTitle  >Треки</CenterTitle>
       <CenterFilter>
         <CenterFilterTitle >Искать по:</CenterFilterTitle>
-        <FilterTracks label="исполнителю"  filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
-        <FilterTracks label="году выпуска"  filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
-        <FilterTracks label="жанру"  filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
+        <FilterTracks label="исполнителю" options={newauthor}  filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
+        <FilterTracks label="году выпуска" options={newyear} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
+        <FilterTracks label="жанру" options={newgenre} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
       </CenterFilter>
       <CenterblockContent>
         <CenterPlaylistTitle >
