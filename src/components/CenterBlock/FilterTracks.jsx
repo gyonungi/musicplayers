@@ -13,7 +13,7 @@ export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
 
   return (
     <div className="dropdown">
-      <button
+      <button 
         // если какой-то фильтр в этой категории выбран, то подсвечиваем кнопку активной
         className={`centerBlock__filter_btn ${filter.length ? 'active' : ''}`}
         onClick={handleFilterClick}
@@ -24,11 +24,11 @@ export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
         // если состояние видимости меню включено, то отрисовываем фильтр
         visible && (
           <ul className="list">
-            {options.map((item) => (
+            {options.map((item,index) => (
               <li
                 // выбранный элемент из списка подсвечиваем активным
                 className={`filter-list-item ${filter.includes({item}) ? 'active' : ''}`}
-                key={item}
+                key={index}
                 onClick={() => handleFilterItemClick({item})}
               >
                 {item}
