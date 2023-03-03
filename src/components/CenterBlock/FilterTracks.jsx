@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
   const [visible, setVisible] = useState(false);
-
   const handleFilterItemClick = (name) => {
     onFilterItemClick(name);
     setVisible(false);
@@ -28,12 +27,13 @@ export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
             {options.map((item) => (
               <li
                 // выбранный элемент из списка подсвечиваем активным
-                className={`filter-list-item ${filter.includes(item.name) ? 'active' : ''}`}
-                key={item.id}
-                onClick={() => handleFilterItemClick(item.name)}
+                className={`filter-list-item ${filter.includes({item}) ? 'active' : ''}`}
+                key={item}
+                onClick={() => handleFilterItemClick({item})}
               >
-                {item.name}
+                {item}
               </li>
+              
             ))}
           </ul>
         )
