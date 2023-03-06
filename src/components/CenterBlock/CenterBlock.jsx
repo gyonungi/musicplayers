@@ -5,9 +5,9 @@ import { FilterTracks } from "./FilterTracks";
 import "./CenterBlock.css";
 import { useThemeContext } from "../ThemeStore/Themestore";
 import { useGetAllTracksQuery } from "../../backend/tracks";
-import { all } from "axios";
 
-const CenterBlockContent = () => {
+
+export const CenterBlockContent = () => {
   const { data: allTracks = [], error, isLoading } = useGetAllTracksQuery();
 
   const { theme } = useThemeContext()
@@ -65,19 +65,19 @@ const handleArtistFilterSelect = (artist) => {
       const elem = allTracks[f];
       newauthor.push(elem.author)
     }
-    console.log(newauthor);
+    
       const newyear = [];
       for (let j = 0; j < allTracks.length; j++) {
         const elem = allTracks[j];
         newyear.push(elem.release_date);
       }
-      console.log(newyear);
+      
     const newgenre = [];
     for (let i = 0; i < allTracks.length; i++) {
       const elem = allTracks[i];
       newgenre.push(elem.genre);
     }
-    console.log(newgenre);
+    
 
   return (
    <CenterBlockDiv>

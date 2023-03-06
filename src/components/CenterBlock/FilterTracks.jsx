@@ -27,9 +27,9 @@ export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
             {options.map((item,index) => (
               <li
                 // выбранный элемент из списка подсвечиваем активным
-                className={`filter-list-item ${filter.includes({item}) ? 'active' : ''}`}
+                className={`filter-list-item ${filter.includes(item) ? 'active' : ''}`}
                 key={index}
-                onClick={() => handleFilterItemClick({item})}
+                onClick={() => handleFilterItemClick(item)}
               >
                 {item}
               </li>

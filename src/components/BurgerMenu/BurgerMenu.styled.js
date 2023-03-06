@@ -55,3 +55,7 @@ export const  StyledBurgerLinkList = styled.div`
     width: 39px;
     height: 39px;
     `;
+    export const StyledBurgeritem = styled.li`
+    padding: 5px 0;
+    margin-bottom: 16px;
+    `;

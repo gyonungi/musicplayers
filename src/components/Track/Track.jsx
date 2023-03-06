@@ -1,12 +1,13 @@
 import React from 'react'
-
+import { useThemeContext } from '../ThemeStore/Themestore';
 import { TrackDiv,TrackTitle,TrackTitleImg,TrackTitleSVG,TrackTitleText,TrackTitleLink,TrackTitleSpan,TrackAuthor,TrackAuthorLink,TrackAlbum,TrackAlbumLink,TrackTimeSVG,TrackTimeText } from './Track.styled'
+import LikeButton from '../Player/Like/TrackListLike/LikeButton';
 
 const PlaylistItem = ({ id, track, artist, album, time, trackId, favTracks }) => {
   const handleTrackId = () => {
     trackId(id);
   };
-
+  const { theme } = useThemeContext()
 
   function fancyTimeFormat(duration) {
     const hrs = ~~(duration / 3600);
@@ -30,14 +31,15 @@ const PlaylistItem = ({ id, track, artist, album, time, trackId, favTracks }) =>
             </TrackTitleSVG>
           </TrackTitleImg>
           <TrackTitleText>
-            <TrackTitleLink  href="http://">
-              Mode <TrackTitleSpan>{track}</TrackTitleSpan>
+            <TrackTitleLink   href="http://">
+               <TrackTitleSpan   >{track} </TrackTitleSpan>
             </TrackTitleLink>
           </TrackTitleText>
         </TrackTitle>
-        <TrackAuthor>
-          <TrackAuthorLink href="http://">
+        <TrackAuthor >
+          <TrackAuthorLink $IsTheme={theme} href="http://"   >
           {artist}
+          
           </TrackAuthorLink>
         </TrackAuthor>
         <TrackAlbum>
@@ -48,6 +50,7 @@ const PlaylistItem = ({ id, track, artist, album, time, trackId, favTracks }) =>
         <div className="track__time">
           <TrackTimeSVG alt="time">
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+            <LikeButton id={id} favTracks={favTracks} />
           </TrackTimeSVG>
           <TrackTimeText >{fancyTimeFormat(time)}</TrackTimeText>
         </div>

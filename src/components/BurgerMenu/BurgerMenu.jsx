@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import {BurgerMenuDiv,StyledBurgerLinkList,StyledBurgerLink,StyledBurgerButton,StyledBurgerTheme} from "./BurgerMenu.styled"
 import { useThemeContext } from "../ThemeStore/Themestore";
 import { Fragment } from 'react'
+import { useDispatch } from 'react-redux';
+import { logOut } from "../../store/reducers/auth";
+import { Link } from 'react-router-dom';
 function BurgerMenu() {
     const [menuVisible, setmenuVisible] = useState(false);
 
@@ -11,6 +14,13 @@ function BurgerMenu() {
     }
    
     const { toggleTheme, theme } = useThemeContext()
+
+
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+      dispatch(logOut())
+    }
     
     return (
         <BurgerMenuDiv>
@@ -23,9 +33,17 @@ function BurgerMenu() {
         menuVisible &&(
             <Fragment>
                <StyledBurgerLinkList $IsTheme={theme}>
-                 <StyledBurgerLink exact to = "/" >Главное  </StyledBurgerLink>
-                <StyledBurgerLink exact to = "/user-playlist">Фильмы </StyledBurgerLink>
-                <StyledBurgerLink exact to = "/signing">Войти </StyledBurgerLink>
+              
+                 <StyledBurgerLink>
+                 <Link exact to = "/main" >Главное     </Link>
+                 </StyledBurgerLink>   
+                <StyledBurgerLink>
+                  <Link exact to = "/main/favtrack/"> Мой плейлист   </Link>
+                  </StyledBurgerLink>
+                <StyledBurgerLink>
+                    <Link onClick={handleLogout}
+                 exact to = "/">Выйти    </Link>
+                 </StyledBurgerLink>
                 <StyledBurgerTheme 
                  $IsTheme={theme}
                  type="button"
