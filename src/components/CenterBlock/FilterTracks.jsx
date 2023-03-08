@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 
-import { DropDownDiv,FilterListItem } from "./CenterBlock.jsx"
-
 export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
   const [visible, setVisible] = useState(false);
-
   const handleFilterItemClick = (name) => {
     onFilterItemClick(name);
     setVisible(false);
@@ -15,8 +12,8 @@ export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
   }
 
   return (
-    <DropDownDiv>
-      <button
+    <div className="dropdown">
+      <button 
         // если какой-то фильтр в этой категории выбран, то подсвечиваем кнопку активной
         className={`centerBlock__filter_btn ${filter.length ? 'active' : ''}`}
         onClick={handleFilterClick}
@@ -27,19 +24,20 @@ export const FilterTracks = ({ label, filter, onFilterItemClick, options }) => {
         // если состояние видимости меню включено, то отрисовываем фильтр
         visible && (
           <ul className="list">
-            {options.map((item) => (
-              <FilterListItem
+            {options.map((item,index) => (
+              <li
                 // выбранный элемент из списка подсвечиваем активным
-                className={`filter-list-item ${filter.includes(item.name) ? 'active' : ''}`}
-                key={item.id}
-                onClick={() => handleFilterItemClick(item.name)}
+                className={`filter-list-item ${filter.includes(item) ? 'active' : ''}`}
+                key={index}
+                onClick={() => handleFilterItemClick(item)}
               >
-                {item.name}
-              </FilterListItem>
+                {item}
+              </li>
+              
             ))}
           </ul>
         )
       }
-    </DropDownDiv>
+    </div>
   )
 }
