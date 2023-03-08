@@ -1,13 +1,14 @@
-import styled from "styled-components";
+
+import React from 'react'
+
+import logoWhite from "../../images/logoWhite.png";
+import { StyledLogo } from './Logo.styled';
 
 
-export const  StyledLogo = styled.img`
-    width: 140px;
-    height: 21px;
-    background-color: transparent;
-    margin-right: 104px;
-    background-repeat: no-repeat;
-    `;
+function Logo() {
+  return (
+    <StyledLogo src= {logoWhite}/> 
+  );
+}
 
-
- 
+export default Logo;

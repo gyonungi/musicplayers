@@ -1,91 +1,124 @@
-import styled from "styled-components";
+import React, { useState } from "react";
+import { CenterBlockDiv,CenterTitle,CenterFilter,CenterFilterTitle,CenterPlaylistTitle,CenterPlaylist,CenterPlaylistCol1,CenterPlaylistCol2,CenterPlaylistCol3,CenterPlaylistCol4,CenterblockContent } from "./CenterBlock.styled";
+import Track from "../Track/Track";
+import { FilterTracks } from "./FilterTracks";
+import "./CenterBlock.css";
+import { useThemeContext } from "../ThemeStore/Themestore";
+import { useGetAllTracksQuery } from "../../backend/tracks";
 
-export const CenterBlockDiv = styled.div`
-    padding-left: 111px;
-    margin-right: auto;
-`;
 
-export const CenterTitle = styled.h2`
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    color: white;
-    line-height: 72px;
-    letter-spacing: -0.8px;
-    margin-bottom: 45px;
-`;
+export const CenterBlockContent = () => {
+  const { data: allTracks = [], error, isLoading } = useGetAllTracksQuery();
 
-export const CenterFilter= styled.div`
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-bottom: 51px;
-`;
+  const { theme } = useThemeContext()
+  
+  const [artistFilter, setArtistFilter] = useState([]);
+  const [yearFilter, setYearFilter] = useState([]);
+  const [genreFilter, setGenreFilter] = useState([]);
 
-export const CenterFilterTitle= styled.h3`
-    color: white;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-right: 15px;
-`;
+const handleArtistFilterSelect = (artist) => {
 
-export const CenterblockContent =styled.div`
-    display: flex;
-    flex-direction: column;
-`;
+    // если выбрали отключаем  состояние фильтрации
+    setArtistFilter((prevState) => {
+      if (prevState.includes(artist)) {
+        return prevState.filter(item => item !== artist);
+      } else return [...prevState, artist]
+    });
+  };
 
-export const CenterPlaylistTitle= styled.div`
-    display: flex;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 2px;
-    color: #696969;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-`;
+  const handleGenreFilterSelect = (genre) => {
+    
+    setGenreFilter((prevState) => {
+      if (prevState.includes(genre)) {
+        return prevState.filter(item => item !== genre);
+      } else return [...prevState, genre]
+    });
+  };
 
-export const CenterPlaylist= styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-`;
+  const handleYearFilterSelect = (year) => {
+   
+    setYearFilter((prevState) => {
+      if (prevState.includes(year)) {
+        return prevState.filter(item => item !== year);
+      } else return [...prevState, year]
+    });
+  };
+      
+    // фильтрация треков
+    const filteredTracks = allTracks.filter((track) => {
+      let isFilterAllowed = true
+      if(artistFilter.length) {
+      isFilterAllowed = artistFilter.includes(track.author)
+      }
+      if(yearFilter.length && isFilterAllowed){
+       isFilterAllowed = genreFilter.includes(track.year)
+      }
+      if(genreFilter.length && isFilterAllowed){
+         isFilterAllowed = genreFilter.includes(track.genre)
+      }
+      return isFilterAllowed
+      
+   })
+ 
+    const newauthor = [];
+    for (let f = 0; f < allTracks.length; f++) {
+      const elem = allTracks[f];
+      newauthor.push(elem.author)
+    }
+    
+      const newyear = [];
+      for (let j = 0; j < allTracks.length; j++) {
+        const elem = allTracks[j];
+        newyear.push(elem.release_date);
+      }
+      
+    const newgenre = [];
+    for (let i = 0; i < allTracks.length; i++) {
+      const elem = allTracks[i];
+      newgenre.push(elem.genre);
+    }
+    
 
-export const CenterPlaylistCol1= styled.div`
-    width: 447px;
-`;
+  return (
+   <CenterBlockDiv>
+      <CenterTitle  >Треки</CenterTitle>
+      <CenterFilter>
+        <CenterFilterTitle >Искать по:</CenterFilterTitle>
+        <FilterTracks label="исполнителю" options={newauthor}  filter={artistFilter} onFilterItemClick={handleArtistFilterSelect} />
+        <FilterTracks label="году выпуска" options={newyear} filter={yearFilter} onFilterItemClick={handleYearFilterSelect} />
+        <FilterTracks label="жанру" options={newgenre} filter={genreFilter} onFilterItemClick={handleGenreFilterSelect} />
+      </CenterFilter>
+      <CenterblockContent>
+        <CenterPlaylistTitle >
+          <CenterPlaylistCol1  >Трек</CenterPlaylistCol1>
+          <CenterPlaylistCol2 >ИСПОЛНИТЕЛЬ</CenterPlaylistCol2>
+          <CenterPlaylistCol3 >АЛЬБОМ</CenterPlaylistCol3>
+          <CenterPlaylistCol4 >◴</CenterPlaylistCol4>
+        </CenterPlaylistTitle>  
+        {error ? (
+        <>Oh no, there was an error</>
+      ) : isLoading ? (
+        <CenterPlaylist $IsTheme={theme}/>
+      ) : allTracks ? (
+        <CenterPlaylist >
 
-export const CenterPlaylistCol2= styled.div`
-   width: 321px;
-`;
+    {filteredTracks.map((element, index) => (
+      
+                  <Track 
+                  $IsTheme={theme}
+                  id={element.id}
+                  track={element.name}
+                  artist={element.author}
+                  album={element.album}
+                  time={element.duration_in_seconds}
+                  key={index}
+                  />
+                ))}
+        </CenterPlaylist>
+      ) : null } 
+      </CenterblockContent>
+    </CenterBlockDiv>
+  );
+}
 
-export const CenterPlaylistCol3= styled.div`
-    width: 245px;
-`;
-
-export const CenterPlaylistCol4= styled.div`
-    padding-left: 30px;
-    width: 60px;
-`;
-
-export const DropDownDiv= styled.div`
-     position: relative;
-    display: inline-block;
-`;
-
-export const FilterListItem= styled.li`
-     color: #313131;
-    text-decoration: none;
-    display: block;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    font-feature-settings: "pnum" on, "lnum" on;
-    color: #ffffff;
-    display: flex;
-    justify-content: space-around;
-`;
+export default CenterBlockContent;

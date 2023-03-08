@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigationMenuDiv,NavigationMenuLinkDailyPlayList,NavigationMenuLinkTop100,NavigationMenuLinkIndy } from "./NagivationMenu"; 
+import { NavigationMenuDiv,NavigationMenuLinkDailyPlayList,NavigationMenuLinkTop100,NavigationMenuLinkIndy } from "./NagivationMenu.styled"; 
 
 
 
